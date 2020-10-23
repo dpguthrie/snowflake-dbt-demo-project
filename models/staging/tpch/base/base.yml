@@ -1,0 +1,145 @@
+version: 2
+
+sources:
+  - name: tpch
+    database: raw
+    schema: tpch_sf001
+    tables:
+      - name: customer
+        columns:
+          - name: c_custkey
+            description: unique customer key
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: c_name
+          - name: c_address
+          - name: c_nationkey
+          - name: c_phone
+          - name: c_acctbal
+          - name: c_mktsegment
+          - name: c_comment
+
+      - name: lineitem
+        columns:
+          - name: l_orderkey
+            description: Foreign Key to O_ORDERKEY
+            tests: 
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: l_partkey
+            description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
+          - name: l_suppkey
+            description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
+          - name: l_linenumber
+          - name: l_quantity
+          - name: l_extendedprice
+          - name: l_discount
+          - name: l_tax
+          - name: l_returnflag
+          - name: l_linestatus
+          - name: l_shipdate
+          - name: l_commitdate
+          - name: l_receiptdate
+          - name: l_shipinstruct
+          - name: l_shipmode
+          - name: l_comment
+
+      - name: nation
+        columns:
+          - name: n_nationkey
+            description: 25 nations are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: n_name
+          - name: n_regionkey
+            description: Foreign Key to R_REGIONKEY
+          - name: n_comment
+
+      - name: orders
+        columns:
+          - name: o_orderkey
+            description: SF*1,500,000 are sparsely populated
+            tests: 
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: o_custkey
+            description: Foreign Key to C_CUSTKEY
+          - name: o_orderstatus
+          - name: o_totalprice
+          - name: o_orderdate
+          - name: o_orderpriority
+          - name: o_clerk
+          - name: o_shippriority
+          - name: o_comment
+
+      - name: part
+        columns:
+          - name: p_partkey
+            description: SF*200,000 are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: p_name
+          - name: p_mfgr
+          - name: p_brand
+          - name: p_type
+          - name: p_size
+          - name: p_container
+          - name: p_retailprice
+          - name: p_comment
+
+      - name: partsupp
+        columns:
+          - name: ps_partkey
+            description: Foreign Key to P_PARTKEY
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: ps_suppkey
+            description: Foreign Key to S_SUPPKEY
+          - name: ps_availqty
+          - name: ps_supplycost
+          - name: ps_comment
+
+      - name: region
+        columns:
+          - name: r_regionkey
+            description: 5 regions are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: r_name
+          - name: r_comment
+
+      - name: supplier
+        columns:
+          - name: s_suppkey
+            description: SF*10,000 are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: s_name
+          - name: s_address
+          - name: s_nationkey
+            description: Foreign Key to N_NATIONKEY
+          - name: s_phone
+          - name: s_acctbal
+          - name: s_comment
