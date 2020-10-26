@@ -1,21 +1,17 @@
-{{
-    config(
-        materialized = 'view'
-    )
-}}
 with orders as (
     
-    select * from {{ ref('base_tpch__orders') }}
+    select * from {{ ref('stg_tpch_orders') }}
 
 ),
+
 line_item as (
 
-    select * from {{ ref('base_tpch__line_item') }}
+    select * from {{ ref('stg_tpch_line_item') }}
 
 )
 select 
 
-    {{ dbt_utils.surrogate_key(['orders.order_key','line_item.line_number']) }} as order_item_key,
+    line_item.order_item_key,
     orders.order_key,
     orders.order_date,
     orders.customer_key,

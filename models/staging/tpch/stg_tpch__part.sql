@@ -1,4 +1,3 @@
-
 with source as (
 
     select * from {{ source('tpch', 'part') }}
@@ -8,6 +7,7 @@ with source as (
 renamed as (
 
     select
+    
         p_partkey as part_key,
         p_name as name,
         p_mfgr as manufacturer,

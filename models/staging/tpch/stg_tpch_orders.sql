@@ -1,4 +1,3 @@
-
 with source as (
 
     select * from {{ source('tpch', 'orders') }}
@@ -8,6 +7,7 @@ with source as (
 renamed as (
 
     select
+    
         o_orderkey as order_key,
         o_custkey as customer_key,
         o_orderstatus as status_code,

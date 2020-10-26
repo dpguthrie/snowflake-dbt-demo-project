@@ -1,0 +1,37 @@
+version: 2
+
+models:
+    - name: dim_customers
+      columns:
+          - name: customer_key
+            tests:
+                - unique
+                - not_null
+                
+    - name: dim_parts
+      columns:
+          - name: part_key
+            tests:
+                - unique
+                - not_null
+
+    - name: dim_suppliers
+      columns:
+          - name: supplier_key
+            tests:
+                - unique
+                - not_null
+
+    - name: fct_order_items
+      columns:
+          - name: order_item_key
+            tests:
+                - unique
+                - not_null
+                
+    - name: fct_orders
+      columns:
+          - name: order_key
+            tests:
+                - unique
+                - not_null

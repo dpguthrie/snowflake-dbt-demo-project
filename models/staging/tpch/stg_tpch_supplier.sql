@@ -7,6 +7,7 @@ with source as (
 renamed as (
 
     select
+    
         s_suppkey as supplier_key,
         s_name as name,
         s_address as address,
