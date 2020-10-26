@@ -1,4 +1,3 @@
-
 with source as (
 
     select * from {{ source('tpch', 'customer') }}
@@ -8,6 +7,7 @@ with source as (
 renamed as (
 
     select
+    
         c_custkey as customer_key,
         c_name as name,
         c_address as address, 
