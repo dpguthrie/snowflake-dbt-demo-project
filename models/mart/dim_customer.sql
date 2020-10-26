@@ -5,16 +5,16 @@
 }}
 with customer as (
 
-    select * from {{ ref('customer') }}
+    select * from {{ ref('stg_tpch_customer') }}
 
 ),
 nation as (
 
-    select * from {{ ref('nation') }}
+    select * from {{ ref('stg_tpch_nation') }}
 ),
 region as (
 
-    select * from {{ ref('region') }}
+    select * from {{ ref('stg_tpch_region') }}
 
 ),
 final as (

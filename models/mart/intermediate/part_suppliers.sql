@@ -1,27 +1,21 @@
-{{
-    config(
-        materialized = 'view'
-    )
-}}
 with part as (
     
-    select * from {{ ref('part') }}
+    select * from {{ ref('stg_tpch_part') }}
 
 ),
 supplier as (
 
-    select * from {{ ref('supplier') }}
+    select * from {{ ref('stg_tpch_supplier') }}
 
 ),
 part_supplier as (
 
-    select * from {{ ref('base_tpch__part_supplier') }}
+    select * from {{ ref('stg_tpch_part_supplier') }}
 
 )
 select 
 
-    {{ dbt_utils.surrogate_key(['part.part_key', 'supplier.supplier_key']) }} as part_supplier_key,
-
+    part_supplier.part_supplier_key,
     part.part_key,
     part.name as part_name,
     part.manufacturer,
