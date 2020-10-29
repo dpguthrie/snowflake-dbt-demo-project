@@ -29,6 +29,7 @@ on-run-start:
 
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
+  - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
     
 # Configuring models
