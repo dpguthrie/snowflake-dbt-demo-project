@@ -5,24 +5,24 @@
 }}
 with supplier as (
 
-    select * from {{ ref('stg_tpch_supplier') }}
+    select * from {{ ref('part_suppliers') }}
 
 ),
 nation as (
 
-    select * from {{ ref('stg_tpch_nation') }}
+    select * from {{ ref('stg_tpch_nations') }}
 ),
 region as (
 
-    select * from {{ ref('stg_tpch_region') }}
+    select * from {{ ref('stg_tpch_regions') }}
 
 ),
 final as (
 
     select 
         supplier.supplier_key,
-        supplier.name,
-        supplier.address,
+        supplier.supplier_name,
+        supplier.supplier_address,
         nation.name as nation,
         region.name as region,
         supplier.phone_number,
@@ -34,9 +34,5 @@ final as (
     inner join region 
             on nation.region_key = region.region_key
 )
-select 
-    *
-from
-    final
-order by
-    supplier_key
+
+select * from final

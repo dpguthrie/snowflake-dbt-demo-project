@@ -1,16 +1,17 @@
 with part as (
     
-    select * from {{ ref('stg_tpch_part') }}
+    select * from {{ ref('stg_tpch_parts') }}
 
 ),
+
 supplier as (
 
-    select * from {{ ref('stg_tpch_supplier') }}
+    select * from {{ ref('stg_tpch_suppliers') }}
 
 ),
 part_supplier as (
 
-    select * from {{ ref('stg_tpch_part_supplier') }}
+    select * from {{ ref('stg_tpch_part_suppliers') }}
 
 )
 select 
@@ -27,6 +28,9 @@ select
 
     supplier.supplier_key,
     supplier.name as supplier_name,
+    supplier.address as supplier_address,
+    supplier.phone_number,
+    supplier.account_balance,
     supplier.nation_key,
 
     part_supplier.available_quantity,

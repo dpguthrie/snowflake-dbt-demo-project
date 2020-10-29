@@ -1,0 +1,16 @@
+version: 2
+
+models:
+    - name: order_items
+      columns:
+          - name: order_item_key
+            tests:
+                - unique
+                - not_null
+                
+    - name: part_suppliers
+      columns:
+          - name: part_supplier_key
+            tests:
+                - unique
+                - not_null
