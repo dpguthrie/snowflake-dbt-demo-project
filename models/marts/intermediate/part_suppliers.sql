@@ -9,12 +9,15 @@ supplier as (
     select * from {{ ref('stg_tpch_suppliers') }}
 
 ),
+
 part_supplier as (
 
     select * from {{ ref('stg_tpch_part_suppliers') }}
 
-)
-select 
+),
+
+final as (
+    select 
 
     part_supplier.part_supplier_key,
     part.part_key,
@@ -27,8 +30,8 @@ select
     part.retail_price,
 
     supplier.supplier_key,
-    supplier.name as supplier_name,
-    supplier.address as supplier_address,
+    supplier.supplier_name,
+    supplier.supplier_address,
     supplier.phone_number,
     supplier.account_balance,
     supplier.nation_key,
@@ -45,3 +48,6 @@ inner join
         on part_supplier.supplier_key = supplier.supplier_key
 order by
     part.part_key
+)
+
+select * from final

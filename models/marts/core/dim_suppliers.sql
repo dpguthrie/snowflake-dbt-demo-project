@@ -5,7 +5,7 @@
 }}
 with supplier as (
 
-    select * from {{ ref('part_suppliers') }}
+    select * from {{ ref('stg_tpch_suppliers') }}
 
 ),
 nation as (
