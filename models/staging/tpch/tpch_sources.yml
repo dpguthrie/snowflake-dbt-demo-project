@@ -26,11 +26,14 @@ sources:
         columns:
           - name: l_orderkey
             description: Foreign Key to O_ORDERKEY
-            tests: 
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+            tests:
+              - relationships:
+                   to: source('tpch', 'orders')
+                   field: o_orderkey
+              #- unique:
+              #    severity: warn
+              #- not_null:
+              #    severity: warn
           - name: l_partkey
             description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
           - name: l_suppkey
@@ -105,10 +108,11 @@ sources:
           - name: ps_partkey
             description: Foreign Key to P_PARTKEY
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              # we need to test a surrogate key on the combo of partkey and suppkey for this
+              #- unique:
+              #    severity: warn
+              #- not_null:
+              #    severity: warn
           - name: ps_suppkey
             description: Foreign Key to S_SUPPKEY
           - name: ps_availqty
