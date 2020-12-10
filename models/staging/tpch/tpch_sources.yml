@@ -108,6 +108,9 @@ sources:
           - name: ps_partkey
             description: Foreign Key to P_PARTKEY
             tests:
+              - relationships:
+                  to: source('tpch', 'part')
+                  field: p_partkey
               # we need to test a surrogate key on the combo of partkey and suppkey for this
               #- unique:
               #    severity: warn
