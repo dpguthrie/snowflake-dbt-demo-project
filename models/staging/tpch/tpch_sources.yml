@@ -26,15 +26,22 @@ sources:
         columns:
           - name: l_orderkey
             description: Foreign Key to O_ORDERKEY
-            tests: 
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+            tests:
+              - relationships:
+                  to: source('tpch', 'orders')
+                  field: o_orderkey
           - name: l_partkey
             description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'part')
+                  field: p_partkey
           - name: l_suppkey
             description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'supplier')
+                  field: s_suppkey
           - name: l_linenumber
           - name: l_quantity
           - name: l_extendedprice
@@ -61,6 +68,10 @@ sources:
           - name: n_name
           - name: n_regionkey
             description: Foreign Key to R_REGIONKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'regionj')
+                  field: r_regionkey
           - name: n_comment
 
       - name: orders
@@ -74,6 +85,10 @@ sources:
                   severity: warn
           - name: o_custkey
             description: Foreign Key to C_CUSTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'customer')
+                  field: c_custkey
           - name: o_orderstatus
           - name: o_totalprice
           - name: o_orderdate
@@ -105,12 +120,15 @@ sources:
           - name: ps_partkey
             description: Foreign Key to P_PARTKEY
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - relationships:
+                  to: source('tpch', 'part')
+                  field: p_partkey
           - name: ps_suppkey
             description: Foreign Key to S_SUPPKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'supplier')
+                  field: s_suppkey
           - name: ps_availqty
           - name: ps_supplycost
           - name: ps_comment
@@ -140,6 +158,10 @@ sources:
           - name: s_address
           - name: s_nationkey
             description: Foreign Key to N_NATIONKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'nation')
+                  field: n_nationkey
           - name: s_phone
           - name: s_acctbal
           - name: s_comment
