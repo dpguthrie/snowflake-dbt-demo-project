@@ -23,6 +23,8 @@ models:
           - not_null
 
   - name: fct_order_items
+    tags:
+      - finance
     columns:
       - name: order_item_key
         tests:
@@ -30,6 +32,8 @@ models:
           - not_null
                 
   - name: fct_orders
+    tags:
+      - finance
     columns:
       - name: order_key
         tests:
