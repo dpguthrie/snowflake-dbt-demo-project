@@ -29,6 +29,7 @@ final as (
         order_item.ship_date,
         order_item.commit_date,
         order_item.receipt_date,
+        order_item.ship_mode,
         part_supplier.cost as supplier_cost,
         {# ps.retail_price, #}
         order_item.base_price,
@@ -38,7 +39,6 @@ final as (
         
         1 as order_item_count,
         order_item.quantity,
-        order_item.ship_mode,
         order_item.gross_item_sales_amount,
         order_item.discounted_item_sales_amount,
         order_item.item_discount_amount,
