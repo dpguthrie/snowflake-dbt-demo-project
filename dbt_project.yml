@@ -31,6 +31,9 @@ on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
+
+vars:
+  override_schema: 'test'
     
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -40,3 +43,9 @@ models:
   tpch:
     staging:
       +materialized: view
+
+    marts:
+      core:
+        #+tags:
+        #  - finance
+      

@@ -1,6 +1,7 @@
 {{
     config(
-        materialized = 'table'
+        materialized = 'table',
+        tags = ['finance']
     )
 }}
 
@@ -28,7 +29,6 @@ final as (
         order_item.ship_date,
         order_item.commit_date,
         order_item.receipt_date,
-        order_item.ship_mode,
         part_supplier.cost as supplier_cost,
         {# ps.retail_price, #}
         order_item.base_price,
