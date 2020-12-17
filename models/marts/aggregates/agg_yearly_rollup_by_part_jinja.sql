@@ -12,7 +12,7 @@
 
 {%- endcall %}
 
-{% set part_names = load_result('result').table.columns[0].values() %}               
+{% set part_names = load_result('result').table.columns[0].values()[0:10] %}               
 
 with fct_order_items as ( select * from {{ ref('fct_order_items') }} ),
 
