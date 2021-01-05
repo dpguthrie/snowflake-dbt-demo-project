@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
+  - name: agg_yearly_rollup_by_part_jinja
+    columns:
+      - name: order_year
+    
+  - name: agg_yearly_rollup_by_part_pivot
+    columns:
+      - name: order_year
