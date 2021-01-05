@@ -3,7 +3,7 @@ version: 2
 exposures:
   - name: yearly_part_rollup
     description: |
-      An h1 header
+      # An h1 header
       ============
 
       Paragraphs are separated by a blank line.
