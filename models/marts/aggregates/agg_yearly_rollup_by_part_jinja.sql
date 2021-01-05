@@ -1,4 +1,4 @@
-/*  Manually driven approach to mapping part names for iteration
+/*  Manually driven approach to mapping part names for iteration - this is automated by the call statement below
 
   {% set part_names = ['goldenrod lavender spring chocolate lace',
                      'blush thistle blue yellow saddle',
