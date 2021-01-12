@@ -33,7 +33,7 @@ on-run-end:
 
 
 vars:
-  override_schema: 'test'
+  start_date: '1997-01-01'
     
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
