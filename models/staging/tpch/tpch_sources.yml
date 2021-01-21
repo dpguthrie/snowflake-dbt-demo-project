@@ -70,7 +70,7 @@ sources:
             description: Foreign Key to R_REGIONKEY
             tests:
               - relationships:
-                  to: source('tpch', 'regionj')
+                  to: source('tpch', 'region')
                   field: r_regionkey
           - name: n_comment
 
