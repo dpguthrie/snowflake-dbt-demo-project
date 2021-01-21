@@ -3,4 +3,6 @@
 {% if target.name == 'dev' %}
 where {{ filter_column_name }} >= dateadd('day', -{{ lookback_days }}, current_timestamp)
 {% endif %}
+
+
 {% endmacro %}
