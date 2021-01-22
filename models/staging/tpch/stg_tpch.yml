@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: stg_tpch_customers
+    descriptoin: staging layer for customers data
     columns:
       - name: customer_key
         tests:
