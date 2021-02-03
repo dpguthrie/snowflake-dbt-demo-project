@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: dim_customers
+    description: Customer dimensions table
     columns:
       - name: customer_key
         tests:
