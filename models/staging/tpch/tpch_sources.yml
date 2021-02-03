@@ -5,6 +5,30 @@ sources:
     database: raw
     schema: tpch_sf001
     tables:
+      - name: orders
+        description: main order tracking table
+        columns:
+          - name: o_orderkey
+            description: SF*1,500,000 are sparsely populated
+            tests: 
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: o_custkey
+            description: Foreign Key to C_CUSTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'customer')
+                  field: c_custkey
+          - name: o_orderstatus
+          - name: o_totalprice
+          - name: o_orderdate
+          - name: o_orderpriority
+          - name: o_clerk
+          - name: o_shippriority
+          - name: o_comment
+          
       - name: customer
         columns:
           - name: c_custkey
@@ -73,29 +97,6 @@ sources:
                   to: source('tpch', 'region')
                   field: r_regionkey
           - name: n_comment
-
-      - name: orders
-        columns:
-          - name: o_orderkey
-            description: SF*1,500,000 are sparsely populated
-            tests: 
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
-          - name: o_custkey
-            description: Foreign Key to C_CUSTKEY
-            tests:
-              - relationships:
-                  to: source('tpch', 'customer')
-                  field: c_custkey
-          - name: o_orderstatus
-          - name: o_totalprice
-          - name: o_orderdate
-          - name: o_orderpriority
-          - name: o_clerk
-          - name: o_shippriority
-          - name: o_comment
 
       - name: part
         columns:
