@@ -13,8 +13,8 @@ select
 
     line_item.order_item_key,
     orders.order_key,
-    orders.order_date,
     orders.customer_key,
+    orders.order_date,
     orders.status_code as order_status_code,
     
     line_item.part_key,
