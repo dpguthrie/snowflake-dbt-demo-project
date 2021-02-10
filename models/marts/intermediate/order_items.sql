@@ -13,12 +13,13 @@ select
 
     line_item.order_item_key,
     orders.order_key,
-    orders.order_date,
     orders.customer_key,
-    orders.status_code as order_status_code,
-    
     line_item.part_key,
     line_item.supplier_key,
+    orders.order_date,
+    orders.status_code as order_status_code,
+    
+    
     line_item.return_flag,
     
     line_item.line_number,
