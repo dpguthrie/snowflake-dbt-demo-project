@@ -16,6 +16,7 @@ sources:
                   severity: warn
               - not_null:
                   severity: warn
+                  
           - name: o_custkey
             description: Foreign Key to C_CUSTKEY
             tests:

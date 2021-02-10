@@ -48,6 +48,7 @@ models:
 
     marts:
       core:
+        materialized: table
         #+tags:
         #  - finance
       
