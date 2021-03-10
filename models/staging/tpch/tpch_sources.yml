@@ -12,10 +12,8 @@ sources:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
             tests: 
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - unique
+              - not_null
                   
           - name: o_custkey
             description: Foreign Key to C_CUSTKEY

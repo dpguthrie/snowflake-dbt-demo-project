@@ -33,10 +33,6 @@ on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
-
-vars:
-  start_date: '1997-01-01'
-    
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 

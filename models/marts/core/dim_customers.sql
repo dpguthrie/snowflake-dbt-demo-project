@@ -1,6 +1,6 @@
 {{
     config(
-        materialized = 'table'
+        materialized = 'table',
     )
 }}
 with customer as (
