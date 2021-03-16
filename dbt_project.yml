@@ -51,4 +51,7 @@ models:
         materialized: table
         #+tags:
         #  - finance
+        
+  snowflake_spend:
+    enabled: true
       
