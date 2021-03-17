@@ -45,8 +45,6 @@ models:
     marts:
       core:
         materialized: table
-        #+tags:
-        #  - finance
         
   snowflake_spend:
     enabled: true
