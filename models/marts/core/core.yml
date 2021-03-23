@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: dim_customers
-    description: Customer dimensions table
+    description: This is the company's customer dimensions. It contains all the dimensions about the customer.
     columns:
       - name: customer_key
         description: Primary key on the customers table
