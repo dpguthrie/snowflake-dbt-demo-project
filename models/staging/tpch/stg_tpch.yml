@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_tpch_customers
-    descriptoin: staging layer for customers data
+    description: staging layer for customers data
     columns:
       - name: customer_key
         tests:
@@ -10,6 +10,7 @@ models:
           - not_null
                 
   - name: stg_tpch_line_items
+    description: staging layer for line items data
     columns:
       - name: order_item_key
         tests:
@@ -17,6 +18,7 @@ models:
           - not_null
 
   - name: stg_tpch_nations
+    description: staging layer for nations data
     columns:
       - name: nation_key
         tests:
@@ -24,6 +26,7 @@ models:
           - not_null
                 
   - name: stg_tpch_orders
+    description: staging layer for orders data
     columns:
       - name: order_key
         tests:
@@ -31,6 +34,7 @@ models:
           - not_null
 
   - name: stg_tpch_part_suppliers
+    description: staging layer for suppliers data
     columns:
       - name: part_supplier_key
         tests:
@@ -38,6 +42,7 @@ models:
           - not_null
                 
   - name: stg_tpch_parts
+    description: staging layer for parts data
     columns:
       - name: part_key
         tests:
@@ -45,6 +50,7 @@ models:
           - not_null
 
   - name: stg_tpch_regions
+    description: staging layer for regions data
     columns:
       - name: region_key
         tests:
@@ -52,6 +58,7 @@ models:
           - not_null
                 
   - name: stg_tpch_suppliers
+    description: staging layer for suppliers data
     columns:
       - name: supplier_key
         tests:
