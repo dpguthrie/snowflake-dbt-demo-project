@@ -34,7 +34,7 @@ on-run-end:
   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
 vars:
-  - start_date: '2020-01-01'
+  start_date: '1999-01-01'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
