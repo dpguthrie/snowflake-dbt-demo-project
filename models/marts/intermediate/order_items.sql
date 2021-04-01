@@ -9,8 +9,6 @@ line_item as (
     select * from {{ ref('stg_tpch_line_items') }}
 
 )
-
-
 select 
 
     line_item.order_item_key,
