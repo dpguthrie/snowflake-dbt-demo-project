@@ -8,7 +8,6 @@
 with orders as (
     
     select * from {{ ref('stg_tpch_orders') }} 
-    -- {{ limit_data_in_dev(filter_column_name='order_date', lookback_days = 7) }}
 
 ),
 order_item as (
