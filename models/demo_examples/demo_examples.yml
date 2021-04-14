@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: materialization_incremental
+    description: demo to show incremental model
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+          - not_null
+
+  - name: use_variables
+    description: demo to show variables
+    columns:
+      - name: order_item_key
+        tests:
+          - unique
+          - not_null         
