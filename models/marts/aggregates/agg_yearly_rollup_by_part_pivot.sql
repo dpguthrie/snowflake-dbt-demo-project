@@ -1,5 +1,5 @@
 with fct_order_items as ( select * from {{ ref('fct_order_items') }} ),
-
+-- test comment
 dim_parts as ( select * from {{ ref('dim_parts') }} ),
 
 merged as (
