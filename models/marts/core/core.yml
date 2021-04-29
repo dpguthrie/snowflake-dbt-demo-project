@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: dim_customers
-    description: This is the company's customer dimensions. It contains all the dimensions about the customer.
+    description: Customer dimensions table
     columns:
       - name: customer_key
         description: Primary key on the customers table
@@ -37,3 +37,10 @@ models:
         tests:
           - unique
           - not_null
+  
+  - name: fct_order_parts
+    columns:
+    - name: order_key
+      tests:
+        - unique
+        - not_null
