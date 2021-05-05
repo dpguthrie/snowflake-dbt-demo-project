@@ -1,0 +1,117 @@
+#
+#  Do you have data in S3? Do you want to access this data within Snowflake from dbt?
+#  Well you can, with the dbt-external-tables package!
+#
+#  GUIDE
+#
+#  (1) Create a Snowflake external stage, e.g.,:
+#
+#        create or replace stage boerse url='s3://deutsche-boerse-eurex-pds/' file_format = (type=csv)
+# 
+#  (2) Add the dbt-external-tables package in packages.yml
+# 
+#  (3) Execute `dbt run-operation stage_external_sources` to create the external tables,
+#      and to refresh them later. (Add this to your dbt Cloud Job.)
+#
+#  (4) Access the source data from dbt, e.g.,
+#
+#        select * from {{ source('deutsche_boerse', 'trading_data') }}
+# 
+#  OTHER EXTERNAL TABLES
+#
+#  This package works with Snowpipes, GCS buckets, Redshift Spectrum tables, and more!
+#
+#  MORE INFO
+#
+#  - dbt package: https://github.com/fishtown-analytics/dbt-external-tables/
+#  - external tables: https://docs.snowflake.com/en/user-guide/tables-external-intro.html
+#  - sample data: https://registry.opendata.aws/deutsche-boerse-pds/
+#
+
+version: 2
+
+sources:
+  - name: deutsche_boerse
+    database: analytics
+    schema: boerse
+
+    tables:
+      - name: trading_data
+        description: >
+          The Deutsche Börse Public Data Set consists of trade data aggregated to one minute
+          intervals from the Eurex and Xetra trading systems. It provides the initial price,
+          lowest price, highest price, final price and volume for every minute of the trading
+          day, and for every tradeable security.
+
+        external:
+          location: "@boerse"
+          file_format: "(type=csv field_delimiter=',' skip_header=1)"
+          auto_refresh: false
+
+          partitions:
+            - name: source_file_name
+              data_type: varchar
+              expression: metadata$filename
+
+        columns:
+          - name: ISIN
+            data_type: TEXT
+            description: "ISIN of the security"
+          - name: MarketSegment
+            data_type: TEXT
+            description: "The product market segment, following the convention on http://www.eurexchange.com"
+          - name: UnderlyingSymbol
+            data_type: TEXT
+            description: "The underlying security"
+          - name: UnderlyingISIN
+            data_type: TEXT
+            description: "ISIN of any underlying security	"
+          - name: Currency
+            data_type: TEXT
+            description: "Currency in which the product is traded	(ISO 4127)"
+          - name: SecurityType
+            data_type: TEXT
+            description: "Type of instrument"
+          - name: MaturityDate
+            data_type: TEXT
+            description: "Maturity date of the security"
+          - name: StrikePrice
+            data_type: NUMBER
+            description: "Strike price"
+          - name: PutOrCall
+            data_type: TEXT
+            description: "Type of option (string: PUT or CALL)"
+          - name: MLEG
+            data_type: TEXT
+            description: "Identifies multi-leg options"
+          - name: ContractGenerationNumber
+            data_type: TEXT
+            description: "The generation number for options contracts"
+          - name: SecurityID
+            data_type: TEXT
+            description: "Unique identifier for each contract"
+          - name: Date
+            data_type: DATE
+            description: "Date of trading period"
+          - name: Time
+            data_type: TEXT
+            description: "Minute of trading to which this entry relates"
+          - name: StartPrice
+            data_type: NUMBER
+            description: "Trading price at the start of period"
+          - name: MaxPrice
+            data_type: NUMBER
+            description: "Maximum price over the period"
+          - name: MinPrice
+            data_type: NUMBER
+            description: "Minimum price over the period"
+          - name: EndPrice
+            data_type: NUMBER
+            description: "Trading price at the end of the period"
+          - name: NumberOfContracts
+            data_type: INT
+            description: "Number of contracts traded during the period"
+          - name: NumberOfTrades
+            data_type: INT
+            description: "Number of distinct trades during the period"
+
