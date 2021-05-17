@@ -1,15 +1,12 @@
-Welcome to your new dbt project!
+Welcome to the Fishtown Analytics demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
 
-### Using the starter project
+                        _              __                   
+       ____ ___  ____ _(_)___     ____/ /__  ____ ___  ____ 
+      / __ `__ \/ __ `/ / __ \   / __  / _ \/ __ `__ \/ __ \
+     / / / / / / /_/ / / / / /  / /_/ /  __/ / / / / / /_/ /
+    /_/ /_/ /_/\__,_/_/_/ /_/   \__,_/\___/_/ /_/ /_/\____/ 
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Special demos
 
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+- **dbt-external-tables:** Manage database objects that read data external to the warehouse within dbt. See `models/demo_examples/external_sources.yml`.
+- **Pivot tables:** One example of creating a pivot table using Snowflake syntax, another example using Jinja. See `models/aggregates/agg_yearly_*.sql`.
