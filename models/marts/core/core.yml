@@ -40,7 +40,7 @@ models:
   
   - name: fct_order_parts
     columns:
-    - name: order_item_key
+    - name: order_key
       tests:
         - unique
         - not_null
