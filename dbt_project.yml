@@ -35,6 +35,8 @@ on-run-end:
 
 vars:
   start_date: '1999-01-01'
+  test: 'false'
+  fct_order_items: 'mock_source__fct_order_items'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
