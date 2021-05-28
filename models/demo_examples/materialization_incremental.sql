@@ -21,12 +21,7 @@ renamed as (
 
     from source
 
-),
- something_else AS (
-     {% if is_incremental() %}
-     SELECT * FROM {{ this }}
-     {% endif %}
- )
+)
 
 select * from renamed
 
