@@ -1,12 +1,12 @@
 version: 2
 
-models:
-  - name: orders_aggregation
+seeds:
+  - name: mock_target__fct_order_items
     tests:
       - dbt_utils.equal_rowcount:
-          compare_model:  ref('mock_target__fct_order_items')
+          compare_model:  ref('orders_aggregation')
       - dbt_utils.equality:
-          compare_model: ref('mock_target__fct_order_items')
+          compare_model: ref('orders_aggregation')
           compare_columns:
             - part_key
             - quantity
