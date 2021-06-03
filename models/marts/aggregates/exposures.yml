@@ -1,6 +1,7 @@
 version: 2
 
 exposures:
+
   - name: yearly_part_rollup
     description: |
       # An h1 header
