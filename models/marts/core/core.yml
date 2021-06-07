@@ -9,6 +9,11 @@ models:
         tests:
           - unique
           - not_null
+      - name: region
+        tests:
+          - accepted_values:
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              severity: warn
                 
   - name: dim_parts
     columns:
@@ -37,7 +42,13 @@ models:
         tests:
           - unique
           - not_null
-  
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+              severity: error
+
   - name: fct_order_parts
     columns:
     - name: order_item_key
