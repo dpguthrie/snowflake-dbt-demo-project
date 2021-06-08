@@ -28,6 +28,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
+  #- '{{create_udfs()}}'
 
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
