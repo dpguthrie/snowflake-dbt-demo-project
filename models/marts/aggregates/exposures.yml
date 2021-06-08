@@ -30,4 +30,4 @@ exposures:
     
     # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAG
     depends_on:
-      - ref('agg_yearly_parts_dynamic_pivot')
+      - ref('agg_ship_modes_dynamic_pivot')
