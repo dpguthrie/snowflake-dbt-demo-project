@@ -6,6 +6,7 @@ with source as (
 
 ),
 
+
 renamed as (
 
     select
@@ -13,7 +14,7 @@ renamed as (
         c_name as name,
         c_address as address, 
         c_nationkey as nation_key,
-        c_phone as phone,
+        c_phone as phone_number,
         c_acctbal as account_balance,
         c_mktsegment as market_segment,
         c_comment as comment
@@ -26,6 +27,6 @@ select * from renamed
 
 {% if is_incremental() %}
   -- this filter will only be applied on an incremental run
-  where customer_key not in (select customer_key from {{this}})
+  where customer_key not in (select customer_key from {{this}} )
 
 {% endif %}

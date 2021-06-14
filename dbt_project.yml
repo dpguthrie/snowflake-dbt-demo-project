@@ -28,6 +28,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 on-run-start:
   - "alter warehouse transforming set warehouse_size=small;"
+  - '{{create_udfs()}}' # comment / uncomment this line to build UDFs called in the create_udfs macro
 
 on-run-end:
   - "alter warehouse transforming set warehouse_size=xsmall;"
@@ -35,6 +36,8 @@ on-run-end:
 
 vars:
   start_date: '1999-01-01'
+  test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
+  fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
