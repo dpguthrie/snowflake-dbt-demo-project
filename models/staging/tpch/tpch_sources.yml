@@ -1,5 +1,6 @@
 version: 2
 
+
 sources:
   - name: tpch
     database: raw
@@ -170,25 +171,3 @@ sources:
           - name: s_phone
           - name: s_acctbal
           - name: s_comment
-  
-  - name: tpch_snapshot
-    database: analytics
-    schema: dbt_mwinkler
-    tables:
-      - name: customer_snapshot_src
-        description: slowly changing dimension table
-        columns:
-          - name: c_custkey
-            description: unique customer key
-            tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
-          - name: c_name
-          - name: c_address
-          - name: c_nationkey
-          - name: c_phone
-          - name: c_acctbal
-          - name: c_mktsegment
-          - name: c_comment
