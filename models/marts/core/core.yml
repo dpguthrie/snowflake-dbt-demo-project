@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: dim_customers
-    description: Customer dimensions table
+    description: Customer dimensions table <-- Add the documentation
     columns:
       - name: customer_key
-        description: Primary key on the customers table
+        description: Primary key on the customers table <-- column-level
         tests:
           - unique
           - not_null
@@ -51,7 +51,7 @@ models:
 
   - name: fct_order_parts
     columns:
-    - name: order_key
+    - name: order_item_key
       tests:
         - unique
         - not_null
