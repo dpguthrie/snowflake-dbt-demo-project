@@ -32,6 +32,7 @@ version: 2
 
 sources:
   - name: deutsche_boerse
+    description: This is an example of using external sources
     database: analytics
     schema: boerse
 
