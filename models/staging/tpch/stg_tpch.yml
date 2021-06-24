@@ -22,13 +22,13 @@ models:
       - name: market_segment
         description: market segment of the customer
       - name: comment
-        description: additional commentary about the customer                
+        description: '{{ doc("comment") }}'
 
   - name: stg_tpch_line_items
     description: staging layer for line items data
     columns:
       - name: order_item_key
-        description: surrogate key for the model -- combo of order_key + line_number
+        description: '{{ doc("order_item_key") }}'
         tests:
           - unique
           - not_null
@@ -39,31 +39,31 @@ models:
       - name: supplier_key
         description: foreign key to stg_tpch_suppliers
       - name: line_number
-        description: sequence of the order items within the order
+        description: '{{ doc("line_number") }}'
       - name: quantity
         description: total units
       - name: extended_price
-        description: foundation to base price
+        description: '{{ doc("extended_price") }}'
       - name: discount_percentage
-        description: percentage of the discount
+        description: '{{ doc("discount_percentage") }}'
       - name: tax_rate
         description: tax rate of the order item
       - name: return_flag
-        description: letter determining the status of the return
+        description: '{{ doc("return_flag") }}'
       - name: status_code
         description: status code of the order item
       - name: ship_date
-        description: the date the order item is being shipped
+        description: '{{ doc("ship_date") }}'
       - name: commit_date
-        description: the date the order item is being commited
+        description: '{{ doc("commit_date") }}'
       - name: receipt_date
-        description: the receipt date of the order item
+        description: '{{ doc("receipt_date") }}'
       - name: ship_instructions
         description: additional instructions on the shipment
       - name: ship_mode
-        description: method of shipping
+        description: '{{ doc("ship_mode") }}'
       - name: comment
-        description: additional context on the order item
+        description: '{{ doc("comment") }}'
 
   - name: stg_tpch_nations
     description: staging layer for nations data
@@ -103,7 +103,7 @@ models:
       - name: ship_priority
         description: numeric representation of the shipping priority, zero being the default
       - name: comment
-        description: additional commentary
+        description: '{{ doc("comment") }}'
 
   - name: stg_tpch_part_suppliers
     description: staging layer for suppliers data
@@ -118,11 +118,11 @@ models:
       - name: supplier_key
         description: foreign key to stg_tpch_suppliers
       - name: available_quantity
-        description: raw available quantity
+        description: '{{ doc("available_quantity") }}'
       - name: cost
-        description: raw cost
+        description: '{{ doc("cost") }}'
       - name: comment
-        description: additional commentary
+        description: '{{ doc("comment") }}'
             
   - name: stg_tpch_parts
     description: staging layer for parts data
@@ -145,9 +145,9 @@ models:
       - name: container
         description: container of the part
       - name: retail_price
-        description: raw retail price
+        description: '{{ doc("retail_price") }}'
       - name: comment
-        description: additional commentary
+        description: '{{ doc("comment") }}'
 
   - name: stg_tpch_regions
     description: staging layer for regions data
@@ -160,7 +160,7 @@ models:
       - name: name
         description: region name
       - name: comment
-        description: additional commentary
+        description: '{{ doc("comment") }}'
 
   - name: stg_tpch_suppliers
     description: staging layer for suppliers data
@@ -171,14 +171,14 @@ models:
           - unique
           - not_null
       - name: supplier_name
-        description: id of the supplier
+        description: '{{ doc("supplier_name") }}'
       - name: supplier_address
-        description: address of the supplier
+        description: '{{ doc("supplier_address") }}'
       - name: nation_key
         description: foreign key to stg_tpch_nations
       - name: phone_number
-        description: phone number of the supplier
+        description: '{{ doc("phone_number") }}'
       - name: account_balance
-        description: raw account balance
+        description: '{{ doc("account_balance") }}'
       - name: comment
-        description: additional commentary
+        description: '{{ doc("comment") }}'
