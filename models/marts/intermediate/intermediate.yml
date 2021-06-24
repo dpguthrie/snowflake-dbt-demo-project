@@ -42,23 +42,23 @@ models:
       - name: quantity
         description: total units
       - name: base_price
-        description: since extended_price is the line item total, we back out the price per item
+        description: '{{ doc("base_price") }}'
       - name: discount_percentage
         description: '{{ doc("discount_percentage") }}'
       - name: discounted_price
-        description: factoring in the discount_percentage, the line item discount total
+        description: '{{ doc("discounted_price") }}'
       - name: gross_item_sales_amount
-        description: same as extended_price
+        description: '{{ doc("gross_item_sales_amount") }}'
       - name: discounted_item_sales_amount
-        description: line item (includes quantity) discount amount
+        description: '{{ doc("discounted_item_sales_amount") }}'
       - name: item_discount_amount
-        description: item level discount amount. this is always a negative number
+        description: '{{ doc("item_discount_amount") }}'
       - name: tax_rate
-        description: tax rate of the order item
+        description: '{{ doc("tax_rate") }}'
       - name: item_tax_amount
         description: item level tax total
       - name: net_item_sales_amount
-        description: the net total which factors in discount and tax                
+        description: '{{ doc("net_item_sales_amount") }}'
   
   - name: part_suppliers
     description: Intermediate model where we join part, supplier and part_supplier. This model is at the part supplier level.
