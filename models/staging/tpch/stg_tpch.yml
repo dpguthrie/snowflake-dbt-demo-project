@@ -5,62 +5,180 @@ models:
     description: staging layer for customers data
     columns:
       - name: customer_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
-                
+      - name: name
+        description: customer id
+      - name: address
+        description: address of the customer
+      - name: nation_key
+        description: foreign key to stg_tpch_nations
+      - name: phone_number
+        description: phone number of the customer
+      - name: account_balance
+        description: total account balance from the customer
+      - name: market_segment
+        description: market segment of the customer
+      - name: comment
+        description: additional commentary about the customer                
+
   - name: stg_tpch_line_items
     description: staging layer for line items data
     columns:
       - name: order_item_key
+        description: surrogate key for the model -- combo of order_key + line_number
         tests:
           - unique
           - not_null
+      - name: order_key
+        description: foreign key to stg_tpch_orders
+      - name: part_key
+        description: foreign key to stg_tpch_part_suppliers
+      - name: supplier_key
+        description: foreign key to stg_tpch_suppliers
+      - name: line_number
+        description: sequence of the order items within the order
+      - name: quantity
+        description: total units
+      - name: extended_price
+        description: foundation to base price
+      - name: discount_percentage
+        description: percentage of the discount
+      - name: tax_rate
+        description: tax rate of the order item
+      - name: return_flag
+        description: letter determining the status of the return
+      - name: status_code
+        description: status code of the order item
+      - name: ship_date
+        description: the date the order item is being shipped
+      - name: commit_date
+        description: the date the order item is being commited
+      - name: receipt_date
+        description: the receipt date of the order item
+      - name: ship_instructions
+        description: additional instructions on the shipment
+      - name: ship_mode
+        description: method of shipping
+      - name: comment
+        description: additional context on the order item
 
   - name: stg_tpch_nations
     description: staging layer for nations data
     columns:
       - name: nation_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
-                
+      - name: name
+        description: nation name
+      - name: region_key
+        description: foreign key to stg_tpch_regions
+      - name: comment
+        description: additional commentary             
+ 
   - name: stg_tpch_orders
     description: staging layer for orders data
     columns:
       - name: order_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
+      - name: customer_key
+        description: foreign key to stg_tpch_customers
+      - name: status_code
+        description: status of the order
+      - name: total_price
+        description: raw price
+      - name: order_date
+        description: date the order was made
+      - name: priority_code
+        description: code associated with the order
+      - name: clerk_name
+        description: id of the clerk
+      - name: ship_priority
+        description: numeric representation of the shipping priority, zero being the default
+      - name: comment
+        description: additional commentary
 
   - name: stg_tpch_part_suppliers
     description: staging layer for suppliers data
     columns:
       - name: part_supplier_key
+        description: surrogate key for the model -- combo of ps_partkey + ps_suppkey
         tests:
           - unique
           - not_null
-                
+      - name: part_key
+        description: foreign key to stg_tpch_parts
+      - name: supplier_key
+        description: foreign key to stg_tpch_suppliers
+      - name: available_quantity
+        description: raw available quantity
+      - name: cost
+        description: raw cost
+      - name: comment
+        description: additional commentary
+            
   - name: stg_tpch_parts
     description: staging layer for parts data
     columns:
       - name: part_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
+      - name: name
+        description: name of the part
+      - name: manufacturer
+        description: manufacturer of the part
+      - name: brand
+        description: brand of the part
+      - name: type
+        description: type of part including material
+      - name: size
+        description: size of the part
+      - name: container
+        description: container of the part
+      - name: retail_price
+        description: raw retail price
+      - name: comment
+        description: additional commentary
 
   - name: stg_tpch_regions
     description: staging layer for regions data
     columns:
       - name: region_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
-                
+      - name: name
+        description: region name
+      - name: comment
+        description: additional commentary
+
   - name: stg_tpch_suppliers
     description: staging layer for suppliers data
     columns:
       - name: supplier_key
+        description: primary key of the model
         tests:
           - unique
           - not_null
+      - name: supplier_name
+        description: id of the supplier
+      - name: supplier_address
+        description: address of the supplier
+      - name: nation_key
+        description: foreign key to stg_tpch_nations
+      - name: phone_number
+        description: phone number of the supplier
+      - name: account_balance
+        description: raw account balance
+      - name: comment
+        description: additional commentary
