@@ -30,6 +30,7 @@ models:
 
 
   - name: dim_parts
+    description: Parts dimensions table
     columns:
       - name: part_key
         description: primary key of the model
@@ -52,6 +53,7 @@ models:
         description: '{{ doc("retail_price") }}'
 
   - name: dim_suppliers
+    description: Suppliers dimensions table
     columns:
       - name: supplier_key
         description: primary key of the model
@@ -72,6 +74,7 @@ models:
         description: '{{ doc("account_balance") }}'
  
   - name: fct_order_items
+    description: order items fact table
     columns:
       - name: order_item_key
         description: '{{ doc("order_item_key") }}'
@@ -128,6 +131,7 @@ models:
         description: '{{ doc("net_item_sales_amount") }}'
   
   - name: fct_orders
+    description: orders fact table
     columns:
       - name: order_key
         description: primary key of the model
