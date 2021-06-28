@@ -2,18 +2,17 @@ version: 2
 
 models:
   - name: dim_customers
-    description: Customer dimensions table <-- Add the documentation
+    description: Customer dimensions table
     columns:
       - name: customer_key
-        description: Primary key on the customers table <-- column-level
+        description: Primary key on the customers table
         tests:
           - unique
           - not_null
       - name: region
         tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
-              severity: warn
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE']
                 
   - name: dim_parts
     columns:
@@ -35,7 +34,7 @@ models:
         tests:
           - unique
           - not_null
-                
+          
   - name: fct_orders
     columns:
       - name: order_key
