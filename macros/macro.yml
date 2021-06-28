@@ -21,9 +21,29 @@ macros:
         type: NUMBER
         description: Number of lookback days. Defaults to 7.
 
-  - name: convert_money
+  - name: money
     description: A macro to convert a column to consistent precision
     arguments:
       - name: col
         type: INTEGER
         description: column getting converted to decimal(16,4)
+
+  - name: create_udfs
+    description: An example of how to create UDFs via macros
+
+  - name: grant_all_on_schemas
+    description: An example of how to grant permissions on schema
+
+  - name: unit_test_mode
+    description: An example of how to create a unit test
+
+  - name: create_area_of_circle
+    description: Continuation of UDF example
+
+  - name: test_all_values_gte_zero
+    description: Macro to ensure values are greater than zero -- perfect for data tests
+
+  - name: standard_account_fields
+    description: An example of using a macro to standardize the fiels within the analysis
+
+
