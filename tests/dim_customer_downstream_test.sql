@@ -1,3 +1,10 @@
+{{
+    config(
+        enabled=true,
+        severity='warn'
+    )
+}}
+
 {{ block_on_tests([
     test_unique(model = source('tpch', 'customer') , column_name = 'c_custkey')
 ]) }}

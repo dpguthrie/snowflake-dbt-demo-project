@@ -1,6 +1,6 @@
 version: 2
 
-models:
+seeds:
 - name: snowflake_contract_rates
   description: >
     This is an example of a seed.

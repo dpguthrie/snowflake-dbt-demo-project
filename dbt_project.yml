@@ -51,6 +51,12 @@ models:
     marts:
       core:
         materialized: table
+    
+    seeds:
+      snowflake_contract_rates:
+        +column_types:
+          effective_date: DATE
+          rate: DECMIAL(4,2)
         
   snowflake_spend:
     enabled: true
