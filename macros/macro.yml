@@ -33,6 +33,13 @@ macros:
 
   - name: grant_all_on_schemas
     description: An example of how to grant permissions on schema
+    arguments:
+      - name: schemas
+        type: STRING
+        description: name of the schema you would like to give the role access to
+      - name: role
+        type: STRING
+        description: user/role within your warehouse you would like to give dbt access to
 
   - name: unit_test_mode
     description: An example of how to create a unit test
@@ -42,8 +49,17 @@ macros:
 
   - name: test_all_values_gte_zero
     description: Macro to ensure values are greater than zero -- perfect for data tests
+    arguments:
+      - name: table
+        type: STRING
+        description: name of the table being tested
+      - name: column
+        type: STRING
+        description: name of the column being tested
 
   - name: standard_account_fields
     description: An example of using a macro to standardize the fiels within the analysis
-
-
+    arguments:
+      - name: return_fields
+        type: STRING
+        description: fields you would like returned for analysis
