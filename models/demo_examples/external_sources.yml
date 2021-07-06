@@ -23,7 +23,7 @@
 #
 #  MORE INFO
 #
-#  - dbt package: https://github.com/fishtown-analytics/dbt-external-tables/
+#  - dbt package: https://github.com/dbt-labs/dbt-external-tables/
 #  - external tables: https://docs.snowflake.com/en/user-guide/tables-external-intro.html
 #  - sample data: https://registry.opendata.aws/deutsche-boerse-pds/
 #
