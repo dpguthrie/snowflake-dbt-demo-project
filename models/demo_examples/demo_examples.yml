@@ -15,4 +15,8 @@ models:
       - name: order_item_key
         tests:
           - unique
-          - not_null         
+          - not_null 
+
+  - name: get_area_of_circle
+    description: demo to show udfs
+        
