@@ -7,6 +7,7 @@
 
 with customer as (
 
+    -- this is my change
     select * from {{ ref('stg_tpch_customers') }}
 
 ),
