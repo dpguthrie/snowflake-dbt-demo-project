@@ -7,7 +7,6 @@
 
 with customer as (
 
-    -- this is my change
     select * from {{ ref('stg_tpch_customers') }}
 
 ),
@@ -32,7 +31,6 @@ final as (
         customer.phone_number,
         customer.account_balance,
         customer.market_segment
-        -- new column
     from
         customer
         inner join nation
