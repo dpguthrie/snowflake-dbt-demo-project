@@ -4,7 +4,7 @@ with source as (
 
 ),
 
-new as (
+cleanup as (
 
     select
     
@@ -21,4 +21,6 @@ new as (
 
 )
 
-select * from new
+select * from cleanup
+
+
