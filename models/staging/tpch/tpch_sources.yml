@@ -226,3 +226,25 @@ sources:
             description: raw account balance
           - name: s_comment
             description: '{{ doc("comment") }}'
+
+  - name: tpch_snapshot
+    database: analytics
+    schema: dbt_mwinkler
+    tables:
+      - name: customer_snapshot_src
+        description: slowly changing dimension table
+        columns:
+          - name: c_custkey
+            description: unique customer key
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: c_name
+          - name: c_address
+          - name: c_nationkey
+          - name: c_phone
+          - name: c_acctbal
+          - name: c_mktsegment
+          - name: c_comment
