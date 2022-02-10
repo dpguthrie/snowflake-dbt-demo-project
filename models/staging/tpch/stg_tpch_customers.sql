@@ -4,7 +4,6 @@ with source as (
 
 ),
 
-
 cleanup as (
 
     select
@@ -23,5 +22,3 @@ cleanup as (
 )
 
 select * from cleanup
-
-
