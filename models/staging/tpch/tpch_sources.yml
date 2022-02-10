@@ -248,3 +248,19 @@ sources:
           - name: c_acctbal
           - name: c_mktsegment
           - name: c_comment
+
+  - name: my_first_model
+    description: My first dbt model!
+    columns:
+      - name: id
+        descriptions: primary key of my first dbt model
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        description: amount column
+    tests:
+      - my_first_model_assert_positive_amount
+
+  - name: my_second_model
+    description: My second dbt model!
