@@ -197,6 +197,9 @@ sources:
                   severity: warn
           - name: r_name
             description: region name
+            tests:
+              - accepted_values:
+                  values: ['AFRICA', 'AMERICA', 'ASIA', 'EUROPE', 'MIDDLE EAST']
           - name: r_comment
             description: '{{ doc("comment") }}'
 
