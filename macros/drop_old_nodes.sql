@@ -1,5 +1,5 @@
 -- Drop tables that are no longer used
-{% macro drop_old_nodes(dryrun=False) %}
+{% macro drop_old_nodes(dryrun=True) %}
 
     {% set nodes = graph.nodes.values() | list %}
 

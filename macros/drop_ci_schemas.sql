@@ -1,5 +1,5 @@
 -- Drop schemas created during cloud CI runs
-{% macro drop_ci_schemas(databases, dryrun=False) %}
+{% macro drop_ci_schemas(databases, dryrun=True) %}
 
     {% set all_schemas_to_drop = [] %}
 
