@@ -36,6 +36,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 #   - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
 
 vars:
+  dbt_metrics_calendar_model: ref('metric_calendar_custom')
   start_date: '1999-01-01'
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing

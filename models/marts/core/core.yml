@@ -167,12 +167,19 @@ models:
         description: '{{ doc("net_item_sales_amount") }}'
 
 metrics:
-  - name: new_customers
-    label: New Customers
-    model: ref('dim_customers')
-    description: "The number of paid customers using the product"
+  - name: order_amount_over_time
+    label: Order Amount over Time
+    model: ref('fct_orders')
+    description: "The sum of order amount over time"
 
-    type: count
-    sql: customer_key
+    type: sum
+    sql: net_item_sales_amount
 
-    timestamp: 
+    timestamp: order_date
+    time_grains: [day, week, month]
+
+    dimensions:
+      - status_code
+      - ship_priority
+
+    meta: {team: finance}
