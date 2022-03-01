@@ -1,7 +1,7 @@
 version: 2
 
 exposures:
-  - name: yearly_part_rollup
+  - name: orders_dashboard
     description: |
       # An h1 header
       ============
@@ -30,4 +30,4 @@ exposures:
     
     # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAG
     depends_on:
-      - ref('agg_ship_modes_dynamic_pivot')
+      - ref('fct_orders')
