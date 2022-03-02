@@ -1,6 +1,3 @@
--- Forcing dependency
--- depends_on: {{ ref('fct_orders') }}
-
 select *
 from {{ metrics.metric(
     metric_name='order_amount_over_time',
