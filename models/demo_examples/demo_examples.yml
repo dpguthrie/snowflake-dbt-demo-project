@@ -20,3 +20,12 @@ models:
   - name: get_area_of_circle
     description: demo to show udfs
         
+sources:
+  - name: test_eqrx_s3
+    schema: dbt_dguthrie
+    tables:
+      - name: dummy_data
+        description: Testing EQRx setup
+        external:
+          location: '@eqrx_test'
+          file_format: "( type = csv )"
