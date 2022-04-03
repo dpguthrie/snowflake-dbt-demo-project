@@ -2,7 +2,6 @@
     config(
         enabled=true,
         severity='error',
-        error_if='>10',
         tags = ['finance']
     )
 }}
