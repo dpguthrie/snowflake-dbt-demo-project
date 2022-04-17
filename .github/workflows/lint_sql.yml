@@ -14,7 +14,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: added
           level: 'warning'
-          fail_on_error: 'true'
+          fail_on_error: true
           sqlfluff_version: "0.11.1"
           sqlfluff_command: "lint" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
