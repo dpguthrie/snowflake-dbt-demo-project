@@ -15,7 +15,7 @@ jobs:
           filter_mode: added
           fail_on_error: 'true'
           sqlfluff_version: "0.11.1"
-          sqlfluff_command: "fix" # Or "lint"
+          sqlfluff_command: "lint" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/models'
           dialect: 'snowflake'
@@ -24,3 +24,4 @@ jobs:
         run: |
           echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
           echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+          echo '${{ steps.lint-sql.outputs.sqlfluff-exit-code }}'
