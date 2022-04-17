@@ -7,14 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # only run when a comment requests linting
-      - uses: khan/pull-request-comment-trigger@master
-        id: check
-        with:
-          trigger: '/lint'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - uses: yu-iskw/action-sqlfluff@v3
         if: steps.check.outputs.triggered == 'true'
         id: lint-sql
