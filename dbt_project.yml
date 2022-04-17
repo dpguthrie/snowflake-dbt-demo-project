@@ -56,6 +56,9 @@ models:
   
   snowflake_spend:
     enabled: true
+
+tests:
+  +store_failures: true  # This will store the failure results for every single test within our project
       
 seeds:
   tpch:

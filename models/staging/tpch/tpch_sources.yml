@@ -73,9 +73,8 @@ sources:
           - name: l_orderkey
             description: Foreign Key to O_ORDERKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'orders')
-                  field: o_orderkey
+              - unique
+              - not_null
           - name: l_partkey
             description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
             tests:
