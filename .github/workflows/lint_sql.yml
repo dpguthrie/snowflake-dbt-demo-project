@@ -13,10 +13,9 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           filter_mode: added
-          level: 'warning'
-          fail_on_error: true
+          fail_on_error: 'true'
           sqlfluff_version: "0.11.1"
-          sqlfluff_command: "lint" # Or "lint"
+          sqlfluff_command: "fix" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
           paths: '${{ github.workspace }}/models'
           dialect: 'snowflake'
