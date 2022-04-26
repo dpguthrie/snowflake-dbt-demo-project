@@ -1,0 +1,17 @@
+[sqlfluff]
+dialect = snowflake
+
+# L031 - Exclude rule requiring fully-qualified table names in joins
+# should have been disabled for BigQuery already
+# L036 - multiple SELECT columns can appear on the SELECT line
+# L051 - Exclude rule requiring INNER JOIN rather than just JOIN
+# L003 - Ignore whitespace problems for now
+# L034 - Don't move around columns
+# L016 - Long lines are fine
+# L009 - No need for a single newline at end of file
+# L008 - No need for spaces around commas
+exclude_rules = L031,L036,L003,L034
+
+[sqlfluff:rules:L010]
+# Keywords
+capitalisation_policy = upper
