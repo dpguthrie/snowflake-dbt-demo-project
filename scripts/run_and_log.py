@@ -27,6 +27,7 @@ from dbtc_api import dbtCloudClient as dbtc
 MAX_LIST_SIZE = 1000
 
 # List of resources to pull metadata for
+# Exhaustive list is models, tests, sources, snapshots, macros, exposures, metrics, seeds
 RESOURCES = ['models', 'tests', 'sources', 'snapshots']
 
 
