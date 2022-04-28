@@ -1,8 +1,8 @@
 name: Run Job and Send Results to Datadog
 on:
-  workflow_dispatch:
-    schedule:
-      - cron: '15 15 * * *'  # Midnight UTC
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '30 15 * * *'
 
 jobs:
   run_and_log:
