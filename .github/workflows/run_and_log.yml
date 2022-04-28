@@ -29,6 +29,5 @@ jobs:
           DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
           DD_API_KEY: ${{ secrets.DD_API_KEY }}
 
-      # Clean up
       - uses: actions/checkout@v2
       
