@@ -1,3 +1,11 @@
+"""
+Before using this script, the following secrets need to be configured within your repo:
+- DBT_CLOUD_SERVICE_TOKEN
+- DBT_CLOUD_API_KEY
+- DBT_CLOUD_ACCOUNT_ID
+- DD_API_KEY --> API key from datadog, used indirectly as an env variable in datadog_api_client.v2.Configuration
+"""
+
 # stdlib
 import json
 import os
