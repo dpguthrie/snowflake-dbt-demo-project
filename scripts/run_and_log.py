@@ -5,7 +5,9 @@ Before using this script, the following secrets need to be configured within you
 - DBT_CLOUD_ACCOUNT_ID
 - DD_API_KEY --> API key from datadog, used indirectly as an env variable in datadog_api_client.v2.Configuration
 
-Also, take note within the workflow yml file of the DBT_CLOUD_JOB_ID.  Update this to your job_id.
+The following are configured within the action itself but would need to be added as an environment variable if running as a one-off.
+- DBT_CLOUD_JOB_ID
+- DD_SITE --> most likely will be datadoghq.com, used indirectly as an env variable in datadog_api_client.v2.Configuration
 """
 
 # stdlib
@@ -20,11 +22,13 @@ from datadog_api_client.v2.model.http_log import HTTPLog
 from datadog_api_client.v2.model.http_log_item import HTTPLogItem
 from dbtc_api import dbtCloudClient as dbtc
 
+
 # Maximum array size from datadog docs
 MAX_LIST_SIZE = 1000
 
 # List of resources to pull metadata for
 RESOURCES = ['models', 'tests', 'sources', 'snapshots']
+
 
 def chunker(seq):
     """Ensure that the log array is <= to the MAX_LIST_SIZE)"""
