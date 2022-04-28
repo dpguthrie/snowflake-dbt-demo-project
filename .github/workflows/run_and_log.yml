@@ -2,7 +2,6 @@ name: Run Job and Send Results to Datadog
 on:
   workflow_dispatch:
   schedule:
-    # * is a special character in YAML so you have to quote this string
     - cron:  '55 23 * * *'
 
 jobs:
