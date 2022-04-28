@@ -4,11 +4,14 @@ Before using this script, the following secrets need to be configured within you
 - DBT_CLOUD_API_KEY
 - DBT_CLOUD_ACCOUNT_ID
 - DD_API_KEY --> API key from datadog, used indirectly as an env variable in datadog_api_client.v2.Configuration
+
+Also, take note within the workflow yml file of the DBT_CLOUD_JOB_ID.  Update this to your job_id.
 """
 
 # stdlib
 import json
 import os
+from typing import List
 
 # third party
 from datadog_api_client.v2 import ApiClient, Configuration
@@ -20,6 +23,8 @@ from dbtc_api import dbtCloudClient as dbtc
 # Maximum array size from datadog docs
 MAX_LIST_SIZE = 1000
 
+# List of resources to pull metadata for
+RESOURCES = ['models', 'tests', 'sources', 'snapshots']
 
 def chunker(seq):
     """Ensure that the log array is <= to the MAX_LIST_SIZE)"""
@@ -27,40 +32,13 @@ def chunker(seq):
     return (seq[pos:pos + size] for pos in range(0, len(seq), size))
 
 
-def send_logs(body):
+def send_logs(body: List[HTTPLogItem]):
     body = HTTPLog(body)
     configuration = Configuration()
     with ApiClient(configuration) as api_client:
         api_instance = LogsApi(api_client)
         response = api_instance.submit_log(body=body, content_encoding='gzip')
         return response
-
-
-# Saving some of what's returned from metadata API
-fields_to_keep = [
-    'runId',
-    'accountId',
-    'projectId',
-    'environmentId',
-    'jobId',
-    'uniqueId',
-    'resourceType',
-    'database',
-    'schema',
-    'alias',
-    'invoicationId',
-    'error',
-    'status',
-    'skip',
-    'compileStartedAt',
-    'compileCompletedAt',
-    'executeStartedAt',
-    'executeCompletedAt',
-    'executionTime',
-    'runGeneratedAt',
-    'runElapsedTime',
-    'type',
-]
 
 
 if __name__ == '__main__':
@@ -80,31 +58,20 @@ if __name__ == '__main__':
         account_id, job_id, {'cause': 'Triggered via GH actions'}
     )
     
-    # Log run_results.json
-    run_results = client.cloud.get_run_artifact(account_id, run_id, 'run_results.json')
-    for chunk in chunker(run_results['results']):
-        for result in chunk:
+    # Retrieve all resources defined above via metadata API
+    for resource in RESOURCES:
+        method = f'get_{resource}'
+        data = getattr(client.metadata, method)(
+            job_id=job_id, run_id=run_id
+        )['data'][resource]
+        for datum in data:
             logs.append(HTTPLogItem(
-                ddsource='run_results.json',
-                ddtags='daily_job',
-                hostname='gh_actions',
-                message=json.dumps(result),
-                service='python'
+                ddsource='python',
+                ddtags=f'job:daily_job,resource:{resource}',
+                hostname='cloud.getdbt.com',
+                message=json.dumps(datum),
+                service='gh_actions'
             ))
-
-    send_logs(logs)
-    logs = []
     
-    # Log models from metadata API
-    models = client.metadata.get_models(job_id, run_id=run_id)
-    for chunk in chunker(models['data']['models']):
-        for model in chunk:
-            logs.append(HTTPLogItem(
-                ddsource='metadata_api',
-                ddtags='daily_job,models',
-                hostname='gh_actions',
-                message=json.dumps({k: v for k, v in model.items() if k in fields_to_keep}),
-                service='python',
-            ))
-        
-    send_logs(logs)
+    for log_items in chunker(logs):
+        send_logs(log_items)
