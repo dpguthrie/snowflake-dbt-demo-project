@@ -22,7 +22,7 @@ jobs:
           pip install --upgrade --upgrade-strategy eager -r requirements.txt
 
       - name: Run Python
-        run: DBT_CLOUD_JOB_ID=73796 DD_SITE=datadoghq.com python scripts/main.py
+        run: DBT_CLOUD_JOB_ID=73796 DD_SITE=datadoghq.com python scripts/run_and_log.py
         env:
           DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
           DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
