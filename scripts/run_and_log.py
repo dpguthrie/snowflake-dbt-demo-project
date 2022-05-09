@@ -20,7 +20,7 @@ from datadog_api_client.v2 import ApiClient, Configuration
 from datadog_api_client.v2.api.logs_api import LogsApi
 from datadog_api_client.v2.model.http_log import HTTPLog
 from datadog_api_client.v2.model.http_log_item import HTTPLogItem
-from dbtc_api import dbtCloudClient as dbtc
+from dbtc import dbtCloudClient as dbtc
 
 
 # Maximum array size from datadog docs
