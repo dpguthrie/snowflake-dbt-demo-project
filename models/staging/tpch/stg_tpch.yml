@@ -82,6 +82,11 @@ models:
  
   - name: stg_tpch_orders
     description: staging layer for orders data
+    tests:
+      - dbt_datamocktool.unit_test:
+          input_mapping:
+            source('tpch', 'orders'): "{{ dmt_raw_orders() }}"
+          expected_output: ref('dmt__expected_stg_tpch_orders')
     columns:
       - name: order_key
         description: primary key of the model

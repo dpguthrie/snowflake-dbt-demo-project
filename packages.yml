@@ -9,3 +9,5 @@ packages:
     version: 0.1.2
   - package: brooklyn-data/dbt_artifacts
     version: 0.8.0
+  - package: mjirv/dbt_datamocktool
+    version: [">=0.1.10"]
