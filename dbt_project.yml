@@ -44,9 +44,6 @@ vars:
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-config:
-  log_format: json 
-
 models:
   
   tpch:
