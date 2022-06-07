@@ -38,6 +38,6 @@ if __name__ == '__main__':
             warehouse='TRANSFORMING',
             role='TRANSFORMER',
         )
-        render_er(url.__str__(), f'assets/{schema.lower()}_erd.png')
+        render_er(str(url), f'assets/{schema.lower()}_erd.png')
         
     print(f'View docs here:  https://cloud.getdbt.com/#/accounts/{account_id}/jobs/{job_id}/#!/overview')
