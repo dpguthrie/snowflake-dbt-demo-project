@@ -18,7 +18,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
+asset-paths: ["assets"]
 
 
 target-path: "target"  # directory which will store compiled SQL files
@@ -40,6 +40,7 @@ vars:
   start_date: '1999-01-01'
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
+  dbt_constraints_sources_enabled: true # only need to enable if using on sources
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
