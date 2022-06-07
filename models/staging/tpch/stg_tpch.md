@@ -5,7 +5,7 @@
 {% docs tpch_source %}
 Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
 
-![ERD](assets/tpch_erd.png)
+![ERD](https://raw.githubusercontent.com/dpguthrie/snowflake-dbt-demo-project/main/assets/tpch_erd.png)
 {% enddocs %}
 
 
