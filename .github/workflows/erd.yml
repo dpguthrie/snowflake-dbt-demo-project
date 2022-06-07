@@ -25,7 +25,9 @@ jobs:
       - name: Run Python
         run: DBT_CLOUD_JOB_ID=93955 DBT_CLOUD_ACCOUNT_ID=43786 python scripts/run_and_erd.py
         env:
-          DB_URI: ${{ secrets.DB_URI }}
+          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          SF_USER: ${{ secrets.SF_USER }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
           DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
           DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       
