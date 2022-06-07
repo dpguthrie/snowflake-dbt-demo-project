@@ -1,0 +1,39 @@
+name: Create ERD
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_and_erd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.x"
+      
+      - name: Install graphviz
+        run: sudo apt install graphviz
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run Python
+        run: python scripts/run_and_erd.py
+        env:
+          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          SF_USER: ${{ secrets.SF_USER }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+      
+      - name: Add file
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '*.png'
+          committer_name: Github Actions
+          committer_email: actions@github.com
+          message: 'Add ERDs'
+  
