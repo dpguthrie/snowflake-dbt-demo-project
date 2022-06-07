@@ -17,7 +17,7 @@ jobs:
           python-version: "3.9.x"
           
       - name: Update gcc
-        run: sudo apt update gcc
+        run: sudo apt-get install python3-dev
       
       - name: Install graphviz
         run: sudo apt install graphviz
