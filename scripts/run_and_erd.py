@@ -26,7 +26,7 @@ if __name__ == '__main__':
         account_id, job_id, {'cause': 'Triggered via GH actions'}
     )
     
-    print(f'View run here:  https://cloud.getdbt.com/accounts/{account_id}/projects/88168/runs/{run_id}/')
+    print(f'View run here:  https://cloud.getdbt.com/#/accounts/{account_id}/projects/88168/runs/{run_id}/')
     
     for schema in SCHEMAS:
         url = URL(
@@ -40,4 +40,4 @@ if __name__ == '__main__':
         )
         render_er(url.__str__(), f'assets/{schema.lower()}_erd.png')
         
-    print(f'View docs here:  https://cloud.getdbt.com/accounts/{account_id}/jobs/{job_id}/#!/overview')
+    print(f'View docs here:  https://cloud.getdbt.com/#/accounts/{account_id}/jobs/{job_id}/#!/overview')
