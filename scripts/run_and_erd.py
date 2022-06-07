@@ -17,6 +17,7 @@ if __name__ == '__main__':
     
     # Initialize dbtCloudClient with appropriate token
     client = dbtc(
+        api_key=os.getenv('DBT_CLOUD_API_KEY'),
         service_token=os.getenv('DBT_CLOUD_SERVICE_TOKEN'),
     )
     
