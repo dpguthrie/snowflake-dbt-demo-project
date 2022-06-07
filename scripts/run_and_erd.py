@@ -3,7 +3,7 @@ import os
 
 # third party
 from eralchemy import render_er
-from snowflake_sqlalchemy import URL
+from snowflake.sqlalchemy import URL
 
 
 SCHEMAS = ['TPCH']
