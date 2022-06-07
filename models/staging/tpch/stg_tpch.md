@@ -1,5 +1,13 @@
 # the intent of this .md is to remove redundancy in the documentation
 
+# used in the tpch source docs page
+
+{% docs tpch_source %}
+Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
+
+![ERD](assets/tpch_erd.png)
+{% enddocs %}
+
 
 # the below are descriptions from stg_tpch_line_items
 

@@ -3,9 +3,9 @@ version: 2
 
 sources:
   - name: tpch
-    description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
-    database: raw
-    schema: tpch_sf001
+    description: '{{ doc("tpch_source") }}'
+    database: doug_demo_v2
+    schema: tpch
     tables:
       - name: orders
         description: main order tracking table
@@ -17,16 +17,15 @@ sources:
         columns:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
-            tests: 
-              - unique
-              - not_null
+            tests:
+              - dbt_constraints.primary_key
                   
           - name: o_custkey
             description: Foreign Key to C_CUSTKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'customer')
-                  field: c_custkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'customer')
+                  pk_column_name: c_custkey
           - name: o_orderstatus
             description: status code of the order
           - name: o_totalprice
@@ -48,16 +47,17 @@ sources:
           - name: c_custkey
             description: unique customer key
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - dbt_constraints.primary_key
           - name: c_name
             description: customer id
           - name: c_address
             description: address of the customer
           - name: c_nationkey
             description: foreign key to stg_tpch_nations
+            tests:
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'nation')
+                  pk_column_name: n_nationkey
           - name: c_phone
             description: phone number of the customer
           - name: c_acctbal
@@ -73,21 +73,21 @@ sources:
           - name: l_orderkey
             description: Foreign Key to O_ORDERKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'orders')
-                  field: o_orderkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'orders')
+                  pk_column_name: o_orderkey
           - name: l_partkey
             description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'part')
-                  field: p_partkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'part')
+                  pk_column_name: p_partkey
           - name: l_suppkey
             description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'supplier')
-                  field: s_suppkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'supplier')
+                  pk_column_name: s_suppkey
           - name: l_linenumber
             description: sequence of the order items within the order
           - name: l_quantity
@@ -121,18 +121,15 @@ sources:
           - name: n_nationkey
             description: 25 nations are populated
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - dbt_constraints.primary_key
           - name: n_name
             description: nation name
           - name: n_regionkey
             description: Foreign Key to R_REGIONKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'region')
-                  field: r_regionkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'region')
+                  pk_column_name: r_regionkey
           - name: n_comment
             description: '{{ doc("comment") }}'
 
@@ -142,10 +139,7 @@ sources:
           - name: p_partkey
             description: SF*200,000 are populated
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - dbt_constraints.primary_key
           - name: p_name
             description: name of the part
           - name: p_mfgr
@@ -173,15 +167,15 @@ sources:
           - name: ps_partkey
             description: Foreign Key to P_PARTKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'part')
-                  field: p_partkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'part')
+                  pk_column_name: p_partkey
           - name: ps_suppkey
             description: Foreign Key to S_SUPPKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'supplier')
-                  field: s_suppkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'supplier')
+                  pk_column_name: s_suppkey
           - name: ps_availqty
             description: raw available quantity
           - name: ps_supplycost
@@ -195,10 +189,7 @@ sources:
           - name: r_regionkey
             description: 5 regions are populated
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - dbt_constraints.primary_key
           - name: r_name
             description: region name
             tests:
@@ -213,10 +204,7 @@ sources:
           - name: s_suppkey
             description: SF*10,000 are populated
             tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
+              - dbt_constraints.primary_key
           - name: s_name
             description: id of the supplier
           - name: s_address
@@ -224,9 +212,9 @@ sources:
           - name: s_nationkey
             description: Foreign Key to N_NATIONKEY
             tests:
-              - relationships:
-                  to: source('tpch', 'nation')
-                  field: n_nationkey
+              - dbt_constraints.foreign_key:
+                  pk_table_name: source('tpch', 'nation')
+                  pk_column_name: n_nationkey
           - name: s_phone
             description: phone number of the supplier
           - name: s_acctbal
