@@ -15,6 +15,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.9.x"
+          
+      - name: Update gcc
+        run: sudo apt update gcc
       
       - name: Install graphviz
         run: sudo apt install graphviz
