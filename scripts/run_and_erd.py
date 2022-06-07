@@ -20,4 +20,4 @@ if __name__ == '__main__':
             warehouse='TRANSFORMING',
             role='TRANSFORMER',
         )
-        render_er(url.__str__(), f'assets/{schema.lower()}.png')
+        render_er(url.__str__(), f'assets/{schema.lower()}_erd.png')
