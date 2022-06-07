@@ -17,7 +17,7 @@ jobs:
           python-version: "3.9.x"
 
       - name: Install graphviz
-        run: sudo apt install graphviz-dev
+        run: sudo apt install graphviz-dev graphviz
 
       - name: Install dependencies
         run: pip install -r requirements.txt
