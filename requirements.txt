@@ -2,7 +2,7 @@
 datadog_api_client
 
 # ERD
-git+https://github.com/maurerle/eralchemy.git@master 
+git+https://github.com/dpguthrie/eralchemy.git@master 
 snowflake-sqlalchemy
 
 # Both
