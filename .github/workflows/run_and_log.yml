@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --upgrade --upgrade-strategy eager -r requirements.txt
+          pip install dbtc datadog_api_client
 
       - name: Run Python
         run: DBT_CLOUD_JOB_ID=73796 DD_SITE=datadoghq.com python scripts/run_and_log.py
