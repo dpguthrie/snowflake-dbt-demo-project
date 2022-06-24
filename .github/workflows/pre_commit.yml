@@ -18,6 +18,6 @@ jobs:
       with:
         output: ' '
 
-    - uses: dpguthrie/action-pre-commit@0.0.1
+    - uses: dpguthrie/action-pre-commit@0.0.2
       with:
         files: ${{ steps.file_changes.outputs.files }}
