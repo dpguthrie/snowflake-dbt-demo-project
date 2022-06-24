@@ -11,13 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-
-    - id: file_changes
-      uses: trilom/file-changes-action@v1.2.4
-      with:
-        output: ' '
-
-    - uses: dpguthrie/action-pre-commit@0.0.3
+    - uses: dpguthrie/action-pre-commit@0.0.4
       with:
         files: ${{ steps.file_changes.outputs.files }}
