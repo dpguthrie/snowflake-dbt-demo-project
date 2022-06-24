@@ -12,14 +12,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
+
     - id: file_changes
       uses: trilom/file-changes-action@v1.2.4
       with:
         output: ' '
-    - uses: offbi/pre-commit-dbt@cc144b9a1a24112428d9a52a66905815990e4554
-      env:
-        SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
-        SF_USER: ${{ secrets.SF_USER }}
-        SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
-      with:
-        args: run --files ${{ steps.file_changes.outputs.files}}
+
+    - name: Install pre-commit
+      run: pip install pre-commit
+
+    - name: Run pre-commit model checks
+      run: pre-commit run --files ${{ steps.file_changes.outputs.files }}
