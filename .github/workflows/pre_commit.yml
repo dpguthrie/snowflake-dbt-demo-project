@@ -13,9 +13,9 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
     - id: file_changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: ' '
+      uses: trilom/file-changes-action@v1.2.4
+      with:
+        output: ' '
     - uses: offbi/pre-commit-dbt@v1.0.0
         env:
           SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
