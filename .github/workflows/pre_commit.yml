@@ -18,8 +18,6 @@ jobs:
       with:
         output: ' '
 
-    - name: Install pre-commit
-      run: pip install pre-commit
-
-    - name: Run pre-commit model checks
-      run: pre-commit run --files ${{ steps.file_changes.outputs.files }}
+    - uses: dpguthrie/action-pre-commit@v0.0.1
+      with:
+        files: ${{ steps.file_changes.outputs.files }}
