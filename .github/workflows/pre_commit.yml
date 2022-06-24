@@ -16,7 +16,7 @@ jobs:
       uses: trilom/file-changes-action@v1.2.4
       with:
         output: ' '
-    - uses: offbi/pre-commit-dbt@v1.0.0
+    - uses: offbi/pre-commit-dbt@cc144b9a1a24112428d9a52a66905815990e4554
       env:
         SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
         SF_USER: ${{ secrets.SF_USER }}
