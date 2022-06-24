@@ -10,7 +10,7 @@ models:
           - not_null
 
   - name: use_variables
-    description: demo to show variables
+    description: demo to show variables check
     columns:
       - name: order_item_key
         tests:
