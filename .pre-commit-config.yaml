@@ -1,0 +1,7 @@
+repos:
+- repo: https://github.com/offbi/pre-commit-dbt
+  rev: v1.0.0
+  hooks:
+  - id: dbt-compile
+    args: ["--cmd-flags", "++profiles-dir", "."]
+  - id: check-script-has-no-table-name
