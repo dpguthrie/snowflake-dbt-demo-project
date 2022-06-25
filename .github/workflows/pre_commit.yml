@@ -11,6 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: dpguthrie/action-pre-commit@0.0.5
+    - uses: dpguthrie/action-pre-commit@0.0.6
       with:
         files: ${{ steps.file_changes.outputs.files }}
