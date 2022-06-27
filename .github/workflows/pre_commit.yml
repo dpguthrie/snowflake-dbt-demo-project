@@ -10,7 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: dpguthrie/action-pre-commit@0.0.6
-      with:
-        files: ${{ steps.file_changes.outputs.files }}
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v3
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Run pre-commit model checks
+        run: pre-commit run --files ${{ steps.file_changes.outputs.files}}
