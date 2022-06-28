@@ -116,6 +116,7 @@ sources:
 
       - name: nation
         description: nation mapping
+        freshness: null
         columns:
           - name: n_nationkey
             description: 25 nations are populated
@@ -184,6 +185,7 @@ sources:
 
       - name: region
         description: region mapping
+        freshness: null
         columns:
           - name: r_regionkey
             description: 5 regions are populated
@@ -199,6 +201,7 @@ sources:
 
       - name: supplier
         description: main supplier table
+        freshness: null
         columns:
           - name: s_suppkey
             description: SF*10,000 are populated
