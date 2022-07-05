@@ -1,0 +1,11 @@
+version: 2
+
+
+sources:
+  - name: mrr
+    description: Contains data used to model MRR
+    database: doug_demo_v2
+    tables:
+      - name: subscription_periods
+        description: Contains subscription information for our customers
+            
