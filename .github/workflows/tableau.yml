@@ -37,14 +37,14 @@ jobs:
             --account-id=$DBT_CLOUD_ACCOUNT_ID \
             --run-id=$RUN_ID \
             --path=manifest.json)
-          echo "MANIFEST_JSON=$(echo $manifest)" >> $GITHUB_ENV
+          echo $manifest > manifest.json
 
       - name: Get exposures
         id: exposures
         run: |
           pip install git+https://github.com/dpguthrie/dbt-exposures-crawler
           python -m exposurescrawler.crawlers.tableau \
-            --manifest-path=$MANIFEST_JSON \
+            --manifest-path=manifest.json \
             --dbt-package-name=tpch \
             --tableau-ignore-projects Archive \
             --verbose
