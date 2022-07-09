@@ -12,7 +12,7 @@ jobs:
       TABLEAU_USERNAME: doug.guthrie@dbtlabs.com
       TABLEAU_PASSWORD: ${{ secrets.TABLEAU_PASSWORD }}
       TABLEAU_SITE: dbttesting123
-      TABLEAU_URL: https://10az.online.tableau.com/
+      TABLEAU_URL: https://10az.online.tableau.com
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
