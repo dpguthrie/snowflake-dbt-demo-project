@@ -28,6 +28,7 @@ jobs:
             --order-by='-id' \
             --limit=1)
           echo $run
+          
           echo "RUN_ID=$(echo $run | jq '.data[0].id')" >> $GITHUB_ENV
 
       - name: Get manifest
