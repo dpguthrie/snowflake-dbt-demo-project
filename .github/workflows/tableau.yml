@@ -27,7 +27,6 @@ jobs:
             --job-id=$DBT_CLOUD_JOB_ID \
             --order-by='-id' \
             --limit=1)
-          echo $run
           echo "RUN_ID=$(echo $run | jq '.data[0].id')" >> $GITHUB_ENV
 
       - name: Get manifest
@@ -61,7 +60,6 @@ jobs:
         id: trigger
         run: |
           pip install dbtc
-          run=$(dbtc trigger-job-and-poll \
+          run=$(dbtc trigger-job \
             --job-id=$DBT_CLOUD_JOB_ID \
-            --payload='{"cause": "Tableau Exposures"}' \
-            --poll-interval=10)
+            --payload='{"cause": "Tableau Exposures"}')
