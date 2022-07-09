@@ -26,7 +26,7 @@ jobs:
           run=$(dbtc list-runs \
             --job-id=$DBT_CLOUD_JOB_ID \
             --order-by='-id' \
-            --limit=1
+            --limit=1 \
             --status=success)
           echo "RUN_ID=$(echo $run | jq '.data[0].id')" >> $GITHUB_ENV
 
