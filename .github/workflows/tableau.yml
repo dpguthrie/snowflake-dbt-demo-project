@@ -27,23 +27,23 @@ jobs:
             --job-id=$DBT_CLOUD_JOB_ID \
             --order-by='-id' \
             --limit=1)
-          echo "::set-output name=run_id::$(echo $run | jq '.data[0].id')"
+          echo "RUN_ID=$(echo $run | jq '.data[0].id')" >> $GITHUB_ENV
 
       - name: Get manifest
         id: manifest
         run: |
           manifest=$(dbtc get-run-artifact \
             --account-id=$DBT_CLOUD_ACCOUNT_ID \
-            --run-id=${{ steps.recent_run.outputs.run_id }} \
+            --run-id=$RUN_ID \
             --path=manifest.json)
-          echo "::set-output name=manifest::$(echo $manifest)"
+          echo "MANIFEST_JSON=$(echo $manifest)" >> $GITHUB_ENV
 
       - name: Get exposures
         id: exposures
         run: |
           pip install git+https://github.com/dpguthrie/dbt-exposures-crawler
           python -m exposurescrawler.crawlers.tableau \
-            --manifest-path=${{ steps.manifest.outputs.manifest }} \
+            --manifest-path=$MANIFEST_JSON \
             --dbt-package-name=tpch \
             --tableau-ignore-projects Archive \
             --verbose
