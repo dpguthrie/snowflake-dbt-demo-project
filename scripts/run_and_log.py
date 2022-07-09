@@ -59,9 +59,11 @@ if __name__ == '__main__':
     )
     
     # Trigger Job and Poll until successful
-    run_id = client.cloud.trigger_job_and_poll(
+    run = client.cloud.trigger_job_and_poll(
         account_id, job_id, {'cause': 'Triggered via GH actions'}
     )
+    
+    run_id = run['data']['id']
     
     # Retrieve all resources defined above via metadata API
     for resource in RESOURCES:
