@@ -1,9 +1,6 @@
 name: Create ERD
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   run_and_erd:
