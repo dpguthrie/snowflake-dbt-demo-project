@@ -1,0 +1,66 @@
+name: Tableau Exposures
+on:
+  workflow_dispatch:
+
+jobs:
+  run_and_expose:
+    runs-on: ubuntu-latest
+    env:
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+      DBT_CLOUD_ACCOUNT_ID: 43786
+      DBT_CLOUD_JOB_ID: 93955
+      TABLEAU_USERNAME: doug.guthrie@dbtlabs.com
+      TABLEAU_PASSWORD: ${{ secrets.TABLEAU_PASSWORD }}
+      TABLEAU_SITE: dbttesting123
+      TABLEAU_URL: https://10az.online.tableau.com/
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.x"
+
+      - name: Get most recent run
+        id: recent_run
+        run: |
+          pip install dbtc
+          run=$(dbtc list-runs \
+            --job-id=$DBT_CLOUD_JOB_ID \
+            --order-by='-id' \
+            --limit=1)
+          echo "::set-output name=run_id::$(echo $run | jq '.data[0].id')"
+
+      - name: Get manifest
+        id: manifest
+        run: |
+          manifest=$(dbtc get-run-artifact \
+            --account-id=$DBT_CLOUD_ACCOUNT_ID \
+            --run-id=${{ steps.recent_run.outputs.run_id }} \
+            --path=manifest.json)
+          echo "::set-output name=manifest::$(echo $manifest)"
+
+      - name: Get exposures
+        id: exposures
+        run: |
+          pip install git+https://github.com/dpguthrie/dbt-exposures-crawler
+          python -m exposurescrawler.crawlers.tableau \
+            --manifest-path=${{ steps.manifest.outputs.manifest }} \
+            --dbt-package-name=tpch \
+            --tableau-ignore-projects Archive \
+            --verbose
+
+      - name: Add file
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '*.yml'
+          committer_name: Github Actions
+          committer_email: actions@github.com
+          message: 'Add tableau exposures'
+
+      - name: Trigger a job
+        id: trigger
+        run: |
+          pip install dbtc
+          run=$(dbtc trigger-job-and-poll \
+            --job-id=$DBT_CLOUD_JOB_ID \
+            --payload='{"cause": "Tableau Exposures"}' \
+            --poll-interval=10)
