@@ -13,7 +13,7 @@ exposures:
   package_name: tpch
   resource_type: exposure
   tags: []
-  type: Dashboard
+  type: dashboard
   unique_id: exposure.tpch.tableau_sales_by_date_056
   url: https://10az.online.tableau.com//#/site/dbttesting123/workbooks/1837395
 version: 2
