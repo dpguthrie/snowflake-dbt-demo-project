@@ -2,7 +2,7 @@ exposures:
 - depends_on:
   - ref('fct_orders')
   description: "\n        # default / Sales by Date\n        *no description* \n\n\
-    \n        **Access**: [Link to Tableau](https://10az.online.tableau.com//#/site/dbttesting123/workbooks/1837395)\n\
+    \n        **Access**: [Link to Tableau](https://10az.online.tableau.com/#/site/dbttesting123/workbooks/1837395)\n\
     \n        **Created at**: 2022-07-08 21:54:39+00:00\n\n        **Last updated\
     \ at**: 2022-07-08 22:14:53+00:00\n        "
   name: tableau_sales_by_date_056
@@ -11,5 +11,5 @@ exposures:
     name: Doug Guthrie
   tags: []
   type: dashboard
-  url: https://10az.online.tableau.com//#/site/dbttesting123/workbooks/1837395
+  url: https://10az.online.tableau.com/#/site/dbttesting123/workbooks/1837395
 version: 2
