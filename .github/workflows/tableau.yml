@@ -63,7 +63,6 @@ jobs:
       - name: Trigger a job
         id: trigger
         run: |
-          pip install dbtc
           run=$(dbtc trigger-job \
             --job-id=$DBT_CLOUD_JOB_ID \
             --payload='{"cause": "Tableau Exposures"}')
