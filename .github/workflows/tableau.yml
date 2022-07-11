@@ -1,6 +1,8 @@
 name: Tableau Exposures
 on:
   workflow_dispatch:
+  # schedule:
+    # - cron:  '55 23 * * *'
 
 jobs:
   run_and_expose:
