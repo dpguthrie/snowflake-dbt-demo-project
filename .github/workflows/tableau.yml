@@ -47,7 +47,8 @@ jobs:
             --manifest-path=manifest.json \
             --dbt-package-name=tpch \
             --tableau-ignore-projects Archive \
-            --verbose
+            --verbose \
+            --yml-path=models/marts/core/tableau_exposures.yml
 
       - name: Add file
         uses: EndBug/add-and-commit@v9
