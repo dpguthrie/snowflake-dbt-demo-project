@@ -1,0 +1,33 @@
+name: Dependent Jobs
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "* * 0 0 0"
+
+  jobs:
+    dependent_jobs:
+      runs-on: ubuntu-latest
+      env:
+        DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+        DBT_CLOUD_ACCOUNT_ID: 43786
+        JOB_1_ID: 93955
+        JOB_2_ID: 93955
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-python@v2
+          with:
+            python-version: "3.9.x"
+        
+        - name: Trigger Job 1
+          run: |
+            pip install dbtc
+            run=$(dbtc trigger-job-and-poll \
+              --job-id=$JOB_1_id \
+              --payload='{"cause": "GH Action - Dependent Jobs - Job 1"}')
+            echo "STATUS=$(echo $run | jq '.data.status')" >> $GITHUB_ENV
+
+        - name: Trigger Job 2
+          if: env.STATUS == 10
+          run: dbtc trigger-job \
+            --job-id=$JOB_2_id \
+            --payload='{"cause": "GH Action - Dependent Jobs - Job 2"}'
