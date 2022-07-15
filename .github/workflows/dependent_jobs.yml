@@ -10,7 +10,7 @@ jobs:
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
-      JOB_1_ID: 93955
+      JOB_1_ID: 73796
       JOB_2_ID: 93955
     steps:
       - uses: actions/checkout@v2
