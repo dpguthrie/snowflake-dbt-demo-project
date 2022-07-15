@@ -28,6 +28,7 @@ on:
 
         - name: Trigger Job 2
           if: env.STATUS == 10
-          run: dbtc trigger-job \
-            --job-id=$JOB_2_id \
-            --payload='{"cause": "GH Action - Dependent Jobs - Job 2"}'
+          run: |
+            dbtc trigger-job \
+              --job-id=$JOB_2_id \
+              --payload='{"cause": "GH Action - Dependent Jobs - Job 2"}'
