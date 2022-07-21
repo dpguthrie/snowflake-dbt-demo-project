@@ -18,7 +18,7 @@ Example:
         {% set sql %}
         -- Create a table with all data to be shared
         create or replace table share_db.private.{{ this.name }} as
-            select * from {{ this }}
+            select * from {{ this }};
         
         grant select on share_db.private.{{ this.name }} to role transformer;
 
