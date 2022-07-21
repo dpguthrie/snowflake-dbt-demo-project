@@ -1,8 +1,7 @@
 name: sqlfluff with reviewdog
 on:
+  workflow_dispatch:
   pull_request:
-    branches:
-      - main
 jobs:
   test-check:
     name: runner / sqlfluff (github-check)
