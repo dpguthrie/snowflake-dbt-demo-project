@@ -1,4 +1,16 @@
-{% macro share_view(tier=0) %}
+{% macro share_view() %}
+
+{#
+
+Usage:
+
+This would be used as a post-hook in the config block at the top of a model
+
+Example:
+
+{{ config(post_hook='{{ share_view() }}') }}
+
+#}
 
     -- Only run in production
     {% if target.name == 'prod' %}
@@ -7,10 +19,6 @@
         -- Create a table with all data to be shared
         create or replace table share_db.private.{{ this.name }} as
             select * from {{ this }}
-            where company_id in (
-                select distinct company_id
-                from {{ ref('company_shares') }}
-            );
         
         grant select on share_db.private.{{ this.name }} to role transformer;
 
@@ -19,9 +27,8 @@
             select a.*
             from share_db.private.{{ this.name }} as a
             inner join share_db.private.company_shares as b on (
-                a.company_id = b.company_id
+                a.customer_id = b.customer_id
                 and b.snowflake_account = current_account()
-                and b.tier >= {{ tier }}
             );
         
         grant select on share_db.public.{{ this.name }} to share customer_share;
