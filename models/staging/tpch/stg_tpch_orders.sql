@@ -18,6 +18,7 @@ renamed as (
         --
         o_shippriority as ship_priority,
         o_comment as comment
+        
 
     from source
 
