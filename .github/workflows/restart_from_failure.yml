@@ -24,4 +24,5 @@ jobs:
           run=$(dbtc trigger-job \
             --job-id=$JOB_ID \
             --payload='{"cause": "Restarting job from failure"}' \
+            --no-should-poll \
             --restart-from-failure)
