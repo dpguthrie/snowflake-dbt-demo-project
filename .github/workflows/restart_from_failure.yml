@@ -23,5 +23,5 @@ jobs:
           pip install git+https://github.com/dpguthrie/dbtc.git@refs/pull/29/head 
           run=$(dbtc trigger-job \
             --job-id=$JOB_ID \
-            --payload='{"cause": "Restarting job from failure"}') \
-            --restart-from-failure
+            --payload='{"cause": "Restarting job from failure"}' \
+            --restart-from-failure)
