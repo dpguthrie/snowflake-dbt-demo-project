@@ -1,0 +1,27 @@
+name: Restart from Failure
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "* * 0 0 0"
+
+jobs:
+  dependent_jobs:
+    runs-on: ubuntu-latest
+    env:
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+      DBT_CLOUD_ACCOUNT_ID: 43786
+      JOB_ID: 73796
+    if: github.actor == 'dpguthrie'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.x"
+      
+      - name: Restart Job from Failure
+        run: |
+          pip install git+https://github.com/dpguthrie/dbtc.git@refs/pull/29/head 
+          run=$(dbtc trigger-job \
+            --job-id=$JOB_ID \
+            --payload='{"cause": "Restarting job from failure"}') \
+            --restart-from-failure
