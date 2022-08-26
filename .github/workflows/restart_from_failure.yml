@@ -11,7 +11,7 @@ jobs:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
       JOB_ID: 73796
-    if: github.actor != 'dpguthrie'
+    if: github.actor == 'dpguthrie'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
