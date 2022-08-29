@@ -94,6 +94,8 @@ models:
         description: status of the order
       - name: total_price
         description: raw price
+        tests:
+          - is_even
       - name: order_date
         description: date the order was made
       - name: priority_code

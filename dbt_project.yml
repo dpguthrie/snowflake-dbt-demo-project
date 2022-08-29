@@ -41,6 +41,8 @@ vars:
   test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
   fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
   dbt_constraints_sources_enabled: true # only need to enable if using on sources
+  dev_targets: ['dev']
+  prod_targets: ['prod']
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -49,6 +51,7 @@ models:
   
   tpch:
     staging:
+      +schema: staging
       +materialized: view
 
     marts:
