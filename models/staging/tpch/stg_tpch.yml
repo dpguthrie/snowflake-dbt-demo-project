@@ -95,7 +95,7 @@ models:
       - name: total_price
         description: raw price
         tests:
-          - is_even
+          - is_even:
               bool: true
       - name: order_date
         description: date the order was made
