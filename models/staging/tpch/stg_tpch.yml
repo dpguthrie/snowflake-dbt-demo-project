@@ -96,6 +96,7 @@ models:
         description: raw price
         tests:
           - is_even
+              bool: true
       - name: order_date
         description: date the order was made
       - name: priority_code
