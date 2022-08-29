@@ -1,6 +1,9 @@
 {% test is_even(model, column_name, bool) %}
 
 {% do log(model, True) %}
+{% do log(model.database, True) %}
+{% do log(model.schema, True) %}
+{% do log(model.identifier, True) %}
 
 with validation as (
 
