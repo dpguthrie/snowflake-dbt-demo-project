@@ -10,4 +10,4 @@ packages:
   - package: Snowflake-Labs/dbt_constraints
     version: 0.3.1
   - package: brooklyn-data/dbt_artifacts
-    version: 0.8.0
+    version: 1.2.0
