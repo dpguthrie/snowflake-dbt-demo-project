@@ -55,11 +55,10 @@ if __name__ == '__main__':
     # Initialize client with an API key and service token
     client = dbtc(
         service_token=os.getenv('DBT_CLOUD_SERVICE_TOKEN'),
-        api_key=os.getenv('DBT_CLOUD_API_KEY')
     )
     
     # Trigger Job and Poll until successful
-    run = client.cloud.trigger_job_and_poll(
+    run = client.cloud.trigger_job(
         account_id, job_id, {'cause': 'Triggered via GH actions'}
     )
     
