@@ -15,7 +15,6 @@ renamed as (
         o_orderdate as order_date,
         o_orderpriority as priority_code,
         o_clerk as clerk_name,
-        --
         o_shippriority as ship_priority,
         o_comment as comment
 
