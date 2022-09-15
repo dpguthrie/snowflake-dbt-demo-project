@@ -1,0 +1,34 @@
+# This action will trigger an already created job on dbt Cloud
+# The important settings for the job include:
+# - defer - defer this job to another one (most likely your most frequently running job)
+# - commands - ensure you're using the state:modified+ selector to only run what's been modified
+#              since the last successful run for the job you're deferring to
+
+name: Run Job on Merge
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  
+jobs:
+  run_on_merge:
+    runs-on: ubuntu-latest
+    env:
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+      DBT_CLOUD_ACCOUNT_ID: 43786
+      JOB_ID: 128558
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.x"
+
+      - name: Restart Job from Failure
+        run: |
+          pip install dbtc==0.2.2
+          dbtc trigger-job \
+              --job-id=$JOB_ID \
+              --payload='{"cause": "Merging code to main"}' \
+              --no-should-poll
