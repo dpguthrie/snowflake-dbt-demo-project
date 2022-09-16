@@ -1,6 +1,6 @@
 # This action will trigger an already created job on dbt Cloud
 # The important settings for the job include:
-# - defer - defer this job to another one (most likely your most frequently running job)
+# - defer - defer this job to itself (will always refer to the most recently modified version of production)
 # - commands - ensure you're using the state:modified+ selector to only run what's been modified
 #              since the last successful run for the job you're deferring to
 
