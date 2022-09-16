@@ -6,7 +6,6 @@
 
 name: Run Job on Merge
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
