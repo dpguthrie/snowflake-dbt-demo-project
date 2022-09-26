@@ -1,0 +1,17 @@
+version: 2
+
+metrics:
+  - name: revenue
+    label: Revenue
+    model: ref('fct_orders')
+    description: "The total revenue of our jaffle business"
+
+    type: sum
+    sql: net_item_sales_amount 
+
+    timestamp: order_date
+    time_grains: [day, week, quarter, month, year]
+
+    dimensions:
+      - status_code
+      - priority_code
