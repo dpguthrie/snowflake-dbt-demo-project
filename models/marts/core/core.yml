@@ -165,21 +165,3 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-
-metrics:
-  - name: order_amount_over_time
-    label: Order Amount over Time
-    model: ref('fct_orders')
-    description: "The sum of order amount over time"
-
-    type: sum
-    sql: net_item_sales_amount
-
-    timestamp: order_date
-    time_grains: [day, week, month]
-
-    dimensions:
-      - status_code
-      - ship_priority
-
-    meta: {team: finance}
