@@ -1,12 +1,20 @@
 version: 2
 
 seeds:
-- name: snowflake_contract_rates
-  description: >
-    This is an example of a seed.
-    Seeds are CSV files in your dbt project (typically in your data directory), that dbt can load into your data warehouse using the dbt seed command.
-  columns:
-     - name: effective_date
-       description: effective date of contract
-     - name: rate
-       description: rate based on the effective date
+  - name: snowflake_contract_rates
+    description: >
+      This is an example of a seed.
+      Seeds are CSV files in your dbt project (typically in your data directory), that dbt can load into your data warehouse using the dbt seed command.
+    columns:
+      - name: effective_date
+        description: effective date of contract
+      - name: rate
+        description: rate based on the effective date
+
+  - name: country_codes
+    description: Lookup table for country and two digit ISO codes
+    columns:
+      - name: Name
+        description: Name of the country
+      - name: Code
+        description: 2-digit ISO code for the country
