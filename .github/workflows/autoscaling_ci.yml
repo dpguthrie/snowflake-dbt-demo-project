@@ -24,6 +24,7 @@ jobs:
         run: |
           pip install https://github.com/dpguthrie/dbtc/archive/feat/autoscaling-ci-job.zip
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
+          echo $SO
           $(dbtc trigger-autoscaling-ci-job \
             --job-id=$JOB_ID \
             --pull-request-id=$PULL_REQUEST_ID \
