@@ -24,9 +24,9 @@ jobs:
         run: |
           pip install https://github.com/dpguthrie/dbtc/archive/feat/autoscaling-ci-job.zip
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
-          echo $SO
-          $(dbtc trigger-autoscaling-ci-job \
+          run=$(dbtc trigger-autoscaling-ci-job \
             --job-id="$JOB_ID" \
             --pull-request-id="$PULL_REQUEST_ID" \
             --payload='{"cause": "Autoscaling Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'"$SO"'","github_pull_request_id":"'"$PULL_REQUEST_ID"'"}' \
             --no-should-poll)
+          echo $run
