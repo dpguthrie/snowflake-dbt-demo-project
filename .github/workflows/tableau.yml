@@ -11,10 +11,10 @@ jobs:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
       DBT_CLOUD_JOB_ID: 93955
-      TABLEAU_USERNAME: doug.guthrie@dbtlabs.com
+      TABLEAU_USERNAME: douglas.p.guthrie@gmail.com
       TABLEAU_PASSWORD: ${{ secrets.TABLEAU_PASSWORD }}
-      TABLEAU_SITE: dbttesting123
-      TABLEAU_URL: https://10az.online.tableau.com
+      TABLEAU_SITE: dbtlabsdemo
+      TABLEAU_URL: https://prod-useast-a.online.tableau.com/
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
