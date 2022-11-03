@@ -8,13 +8,13 @@ exposures:
     \ at**: 2022-11-03 19:55:16+00:00\n        "
   url: https://prod-useast-a.online.tableau.com//#/site/dbtlabsdemo/workbooks/734933
   depends_on:
-  - ref('fct_dbt__model_executions')
   - ref('dim_dbt__models')
+  - ref('fct_dbt__model_executions')
   owner:
     name: Doug Guthrie
     email: douglas.p.guthrie@gmail.com
   tags:
-  - tableau:Data Team
   - tableau:dbt
   - tableau:Metadata
+  - tableau:Data Team
   type: dashboard
