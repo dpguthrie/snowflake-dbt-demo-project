@@ -1,18 +1,20 @@
 version: 2
 exposures:
-- name: tableau_sales_056
-  description: "\n        # default / Sales\n        This workbook contains the source\
-    \ of truth related to sales metrics \n\n\n        **Access**: [Link to Tableau](https://10az.online.tableau.com/#/site/dbttesting123/workbooks/1837395)\n\
-    \n        **Created at**: 2022-07-08 21:54:39+00:00\n\n        **Last updated\
-    \ at**: 2022-07-11 15:31:30+00:00\n        "
-  url: https://10az.online.tableau.com/#/site/dbttesting123/workbooks/1837395
+- name: tableau_model_execution_analysis_0be
+  description: "\n        # default / Model Execution Analysis\n        This workbook\
+    \ contains analytics for our dbt job runs and model execution times \n\n\n   \
+    \     **Access**: [Link to Tableau](https://prod-useast-a.online.tableau.com//#/site/dbtlabsdemo/workbooks/734933)\n\
+    \n        **Created at**: 2022-11-03 14:45:43+00:00\n\n        **Last updated\
+    \ at**: 2022-11-03 19:55:16+00:00\n        "
+  url: https://prod-useast-a.online.tableau.com//#/site/dbtlabsdemo/workbooks/734933
   depends_on:
-  - ref('fct_order_items')
-  - ref('fct_orders')
+  - ref('dim_dbt__models')
+  - ref('fct_dbt__model_executions')
   owner:
     name: Doug Guthrie
-    email: doug.guthrie@dbtlabs.com
+    email: douglas.p.guthrie@gmail.com
   tags:
-  - tableau:Finance
-  - tableau:Sales
+  - tableau:dbt
+  - tableau:Metadata
+  - tableau:Data Team
   type: dashboard
