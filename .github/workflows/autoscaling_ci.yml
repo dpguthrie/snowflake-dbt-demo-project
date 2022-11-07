@@ -23,7 +23,7 @@ jobs:
       
       - name: Trigger Autoscaling CI Job
         run: |
-          pip install https://github.com/dpguthrie/dbtc/archive/feat/autoscaling-ci-job.zip
+          pip install https://github.com/dpguthrie/dbtc/archive/fix/autoscaling-ci.zip
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
           run=$(dbtc trigger-autoscaling-ci-job \
             --job-id="$JOB_ID" \
