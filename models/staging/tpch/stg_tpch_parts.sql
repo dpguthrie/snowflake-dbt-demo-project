@@ -17,7 +17,8 @@ renamed as (
         p_container as container,
         p_retailprice as retail_price,
         p_comment as comment,
-        'hello' as world
+        'hello' as world,
+        'hello_world' as world_2
 
     from source
 
