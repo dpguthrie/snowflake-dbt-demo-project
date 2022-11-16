@@ -1,9 +1,9 @@
 name: Autoscaling dbt Cloud CI
 on:
   workflow_dispatch:
-#   pull_request:
-#     branches:
-#       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   autoscaling:
@@ -23,11 +23,10 @@ jobs:
       
       - name: Trigger Autoscaling CI Job
         run: |
-          pip install https://github.com/dpguthrie/dbtc/archive/feat/autoscaling-ci-job.zip
+          pip install dbtc==0.3.3
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
           run=$(dbtc trigger-autoscaling-ci-job \
             --job-id="$JOB_ID" \
-            --pull-request-id="$PULL_REQUEST_ID" \
             --payload='{"cause": "Autoscaling Slim CI!","git_sha":"'"$GIT_SHA"'","schema_override":"'"$SO"'","github_pull_request_id":'"$PULL_REQUEST_ID"'}' \
             --no-should-poll)
           echo $run
