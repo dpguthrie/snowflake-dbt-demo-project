@@ -1,9 +1,9 @@
 name: Autoscaling dbt Cloud CI
 on:
   workflow_dispatch:
-  pull_request:
-    branches:
-      - main
+#   pull_request:
+#     branches:
+#       - main
 
 jobs:
   autoscaling:
