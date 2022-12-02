@@ -4,8 +4,8 @@ version: 2
 sources:
   - name: tpch
     description: '{{ doc("tpch_source") }}'
-    database: doug_demo_v2
-    schema: tpch
+    database: raw
+    schema: tpch_sf001
     freshness:
       warn_after: {count: 24, period: hour}
       error_after: {count: 48, period: hour}
