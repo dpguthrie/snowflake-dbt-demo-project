@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get previous workflow timestamp
-        uses: dpguthrie/last-workflow-completed-at@v0.1.1
-        id: last_completed_at
+        uses: dpguthrie/last-workflow-created-at@v0.1.2
+        id: last_created_at
