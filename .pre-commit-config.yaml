@@ -3,6 +3,6 @@ repos:
   rev: v1.0.0
   hooks:
   - id: dbt-deps
-  - id: dbt-compile
+  - id: dbt-docs-generate
   - id: check-script-has-no-table-name
   - id: check-model-has-all-columns
