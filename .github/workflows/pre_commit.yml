@@ -20,7 +20,14 @@ jobs:
           output: ' '
 
       - name: Install pre-commit
-        run: pip install pre-commit
+        run: pip install pre-commit dbt-snowflake
 
       - name: Run pre-commit model checks
-        run: pre-commit run --files ${{ steps.file_changes.outputs.files}}
+        env:
+          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          SF_USER: ${{ secrets.SF_USER }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+        run: |
+          mkdir ~/.dbt/
+          ./scripts/create_profile.py > ~/.dbt/profiles.yml
+          pre-commit run --files ${{ steps.file_changes.outputs.files}}
