@@ -14,13 +14,23 @@ jobs:
         uses: actions/checkout@v3
 
       - uses: actions/setup-python@v3
+        with:
+          python-version: "3.9.x"
+  
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
 
       - name: Install pre-commit
-        run: pip install pre-commit
+        run: python -m pip install dbt-snowflake pre-commit
 
       - name: Run pre-commit model checks
-        run: pre-commit run --files ${{ steps.file_changes.outputs.files}}
+        env:
+          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          SF_USER: ${{ secrets.SF_USER }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+        run: |
+          mkdir ~/.dbt/
+          ./scripts/create_profile.py > ~/.dbt/profiles.yml
+          pre-commit run --files ${{ steps.file_changes.outputs.files}}
