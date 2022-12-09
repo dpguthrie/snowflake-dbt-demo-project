@@ -1,5 +1,5 @@
 repos:
-- repo: https://github.com/offbi/pre-commit-dbt
+- repo: https://github.com/datacoves/pre-commit-dbt
   rev: v1.0.0
   hooks:
   - id: check-script-has-no-table-name
