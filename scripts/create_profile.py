@@ -27,4 +27,4 @@ if __name__ == '__main__':
         },
     }
 
-    yaml.dump(profile_config)
+    print(yaml.dump(profile_config))
