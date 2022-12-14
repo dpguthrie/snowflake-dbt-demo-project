@@ -18,6 +18,8 @@ jobs:
       DBT_CLOUD_ACCOUNT_ID: 43786
       PULL_REQUEST_ID: ${{ github.event.number }}
       GIT_SHA: ${{ github.event.pull_request.head.sha }}
+      GITHUB_TOKEN: ${{ github.token }}
+      PR_COMMENT_URL: ${{ github.event.pull_request._links.comments.href }}
 
     steps:
       - uses: actions/checkout@v2

@@ -4,6 +4,7 @@ import sys
 import time
 
 # third party
+import requests
 from dbtc import dbtCloudClient
 
 
@@ -19,6 +20,10 @@ ACCOUNT_ID = os.getenv('DBT_CLOUD_ACCOUNT_ID', None)
 
 # Needed in list_runs endpoint
 COMPLETED_STATUSES = ['success', 'error', 'cancelled']
+
+# If an error is encountered
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+PR_COMMENT_URL = os.getenv('PR_COMMENT_URL')
 
 
 if __name__ == '__main__':
@@ -65,7 +70,10 @@ if __name__ == '__main__':
     while True:
         time.sleep(POLLING_INTERVAL)
         completed_runs = client.cloud.list_runs(
-            ACCOUNT_ID, order_by='-id', status=COMPLETED_STATUSES
+            ACCOUNT_ID,
+            order_by='-id',
+            status=COMPLETED_STATUSES,
+            include_related=['job'],
         )['data']
         completed_runs_dict = {r['id']: r for r in completed_runs}
         completed_runs_ids = completed_runs_dict.keys()
@@ -78,6 +86,17 @@ if __name__ == '__main__':
             break
     
     if completed_dict['error'] or completed_dict['cancelled']:
+        message = '# Run Failures\n---'
+        for status in ['error', 'cancelled']:
+            message = f'### The following jobs completed with a status of {status}:\n'
+            for run in completed_dict['error']:
+                job_name = run['job']['name']
+                href = run['href']
+                id = run['id']
+                message += f'- {job_name} failed for [Run #{id}]({href})\n'
+        payload = {'body': message}
+        headers = {'Authorization': f'Bearer {GITHUB_TOKEN}'}
+        response = requests.post(PR_COMMENT_URL, json=payload, headers=headers)
         sys.exit(1)
         
     else:
