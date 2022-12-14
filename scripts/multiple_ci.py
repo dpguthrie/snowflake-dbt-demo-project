@@ -1,6 +1,7 @@
 # stdlib
 import os
 import sys
+import time
 
 # third party
 from dbtc import dbtCloudClient
@@ -55,6 +56,7 @@ if __name__ == '__main__':
 
     # Poll until all runs are in a "completed" state (success, failure, cancelled)
     while True:
+        time.sleep(POLLING_INTERVAL)
         completed_runs = client.cloud.list_runs(
             account_id, order_by='-id', status=COMPLETED_STATUSES
         )['data']
