@@ -17,4 +17,3 @@ jobs:
       - name: Get previous workflow timestamp
         uses: dpguthrie/last-workflow-created-at@v0.1.2
         id: last_created_at
-      - run: echo '${{ toJSON(github) }}'
