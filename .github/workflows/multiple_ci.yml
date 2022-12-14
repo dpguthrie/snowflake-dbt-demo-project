@@ -1,0 +1,23 @@
+name: Multiple CI Run
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  multiple_ci:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    env:
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+      DBT_CLOUD_ACCOUNT_ID: 43786
+      PULL_REQUEST_ID: ${{ github.event.number }}
+      GIT_SHA: ${{ github.event.pull_request.head.sha }}
+    run: |
+      pip install dbtc==0.3.3
+      python scripts/multiple_ci.py
