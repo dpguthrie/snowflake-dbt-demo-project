@@ -89,7 +89,7 @@ if __name__ == '__main__':
         message = '# Run Failures\n---'
         for status in ['error', 'cancelled']:
             message += f'### The following jobs completed with a status of {status}:\n'
-            for run in completed_dict['error']:
+            for run in completed_dict[status]:
                 job_name = run['job']['name']
                 href = run['href']
                 id = run['id']
