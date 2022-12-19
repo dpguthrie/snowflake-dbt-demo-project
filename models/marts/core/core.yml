@@ -30,9 +30,9 @@ models:
     meta:
       joins:
         - join: stg_tpch_regions
-          sql_on: ${dim_customers.region_key} = ${stg_tpch_orders.region_key}
+          sql_on: ${dim_customers.region_key} = ${stg_tpch_regions.region_key}
         - join: stg_tpch_nations
-          sql_on: ${dim_customers.nation_key} = ${stg_tpch_orders.nation_key}
+          sql_on: ${dim_customers.nation_key} = ${stg_tpch_nations.nation_key}
 
 
   - name: dim_parts
@@ -80,10 +80,8 @@ models:
         description: '{{ doc("account_balance") }}'
     meta:
       joins:
-        - join: stg_tpch_regions
-          sql_on: ${dim_customers.region_key} = ${stg_tpch_orders.region_key}
-        - join: stg_tpch_nations
-          sql_on: ${dim_customers.nation_key} = ${stg_tpch_orders.nation_key}
+        - join: stg_tpch_suppliers
+          sql_on: ${dim_suppliers.supplier_key} = ${stg_tpch_suppliers.supplier_key}
  
   - name: fct_order_items
     description: order items fact table

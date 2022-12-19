@@ -130,7 +130,7 @@ models:
     meta:
       joins:
         - join: stg_tpch_suppliers
-          sql_on: ${stg_tpch_part_suppliers.customer_key} = ${stg_tpch_suppliers.supplier_key}
+          sql_on: ${stg_tpch_part_suppliers.supplier_key} = ${stg_tpch_suppliers.supplier_key}
             
   - name: stg_tpch_parts
     description: staging layer for parts data
