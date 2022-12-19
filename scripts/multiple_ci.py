@@ -86,7 +86,7 @@ if __name__ == '__main__':
             break
     
     if completed_dict['error'] or completed_dict['cancelled']:
-        message = '# Run Failures\n'
+        message = '# dbt Cloud Run Failures\n'
         for status in ['error', 'cancelled']:
             message += f'### The following jobs completed with a status of {status}:\n'
             for run in completed_dict[status]:
