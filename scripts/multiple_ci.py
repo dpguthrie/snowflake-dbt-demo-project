@@ -93,7 +93,7 @@ if __name__ == '__main__':
                 job_name = run['job']['name']
                 href = run['href']
                 id = run['id']
-                message += f'- {job_name} failed for [Run #{id}]({href})\n'
+                message += f'- **{job_name}** failed for [Run #{id}]({href})\n'
         payload = {'body': message}
         headers = {'Authorization': f'Bearer {GITHUB_TOKEN}'}
         response = requests.post(PR_COMMENT_URL, json=payload, headers=headers)
