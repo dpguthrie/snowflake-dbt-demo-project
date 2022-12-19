@@ -23,6 +23,10 @@ models:
         description: market segment of the customer
       - name: comment
         description: '{{ doc("comment") }}'
+    meta:
+      joins:
+        - join: stg_tpch_nations
+          sql_on: ${stg_tpch_customers.nation_key} = ${stg_tpch_nations.nation_key}
 
   - name: stg_tpch_line_items
     description: staging layer for line items data
