@@ -31,6 +31,8 @@ models:
       joins:
         - join: stg_tpch_customers
           sql_on: ${dim_customers.customer_key} = ${stg_tpch_customers.customer_key}
+        - join: stg_tpch_nations
+          sql_on: ${stg_tpch_customers.nation_key} = ${stg_tpch_nations.nation_key}
 
   - name: dim_parts
     description: Parts dimensions table
