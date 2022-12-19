@@ -29,11 +29,8 @@ models:
         description: market segment of the customer
     meta:
       joins:
-        - join: stg_tpch_regions
-          sql_on: ${dim_customers.region_key} = ${stg_tpch_regions.region_key}
-        - join: stg_tpch_nations
-          sql_on: ${dim_customers.nation_key} = ${stg_tpch_nations.nation_key}
-
+        - join: stg_tpch_customers
+          sql_on: ${dim_customers.customer_key} = ${stg_tpch_customers.customer_key}
 
   - name: dim_parts
     description: Parts dimensions table
