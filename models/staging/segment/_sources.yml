@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: dbtc
+    tables: &tables
+      - name: link_clicked
+        columns:
+          - name: link
+            tests:
+              - not_null:
+                  severity: warn  
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: event
+            tests:
+              - not_null
+          - name: sent_at
+            tests:
+              - not_null
+      - name: pages
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: sent_at
+            tests:
+              - not_null
+      - name: tracks
+        columns:
+          - name: event_text
+            tests:
+              - not_null
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: event
+            tests:
+              - not_null
+          - name: sent_at
+            tests:
+              - not_null
+
+  - name: yahooquery
+    tables: *tables
