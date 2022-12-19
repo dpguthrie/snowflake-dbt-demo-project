@@ -1,0 +1,214 @@
+version: 2
+
+
+models:
+  - name: int_segment__pages
+    columns:
+      - name: anonymous_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_locale
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_referrer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: uuid_ts
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_library_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_version
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id
+        description: ""
+        meta:
+          dimension:
+            type: string
+          metrics:
+            total_page_views:
+              type: count_distinct
+      - name: received_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: title
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_title
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: path
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: referrer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: original_timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: sent_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_ip
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_path
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_user_agent
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: src
+        description: ""
+        meta:
+          dimension:
+            type: string
+
+  - name: int_segment__tracks
+    columns:
+      - name: event_text
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_version
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_referrer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_ip
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_path
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_title
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: received_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: sent_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: uuid_ts
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_locale
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_user_agent
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: original_timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: anonymous_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: src
+        description: ""
+        meta:
+          dimension:
+            type: string
+  
+  - name: int_segment__link_clicked
