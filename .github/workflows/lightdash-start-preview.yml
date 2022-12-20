@@ -2,8 +2,9 @@
 name: start-preview
 
 on:
-  push:
-    branches-ignore: [ "main" ]
+  pull_request:
+    branches:
+      - main
 
 jobs:
   preview:
