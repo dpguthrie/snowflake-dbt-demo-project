@@ -80,10 +80,6 @@ models:
         meta:
           dimension:
             type: timestamp
-          metrics:
-            most_recent_visit:
-              type: date
-              sql: "max(${timestamp})"
       - name: original_timestamp
         description: ""
         meta:
