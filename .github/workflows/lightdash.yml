@@ -46,4 +46,4 @@ jobs:
           LIGHTDASH_PROJECT: ${{ secrets.LIGHTDASH_PROJECT }}          
           LIGHTDASH_URL: ${{ secrets.LIGHTDASH_URL }}   
 
-        run: lightdash deploy --project-dir "$PROJECT_DIR" --profiles-dir . --profile prod || lightdash deploy --project-dir "$PROJECT_DIR" --profiles-dir .
+        run: lightdash deploy --project-dir "$PROJECT_DIR" --profiles-dir . --profile tpch || lightdash deploy --project-dir "$PROJECT_DIR" --profiles-dir .
