@@ -100,9 +100,6 @@ models:
           metrics:
             items_in_order:
               type: count_distinct
-            avg_items_in_order:
-              type: avg
-              sql: "${items_in_order}"
       - name: order_date
         description: date of the order
       - name: customer_key
