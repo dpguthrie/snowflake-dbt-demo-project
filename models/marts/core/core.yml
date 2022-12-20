@@ -9,6 +9,10 @@ models:
         tests:
           - unique
           - not_null
+        meta:
+          metrics:
+            total_unique_customers:
+              type: count
       - name: region
         description: region name
         tests:
@@ -92,6 +96,13 @@ models:
           - not_null
       - name: order_key
         description: foreign key for orders
+        meta:
+          metrics:
+            items_in_order:
+              type: count_distinct
+            avg_items_in_order:
+              type: avg
+              sql: "${items_in_order}"
       - name: order_date
         description: date of the order
       - name: customer_key
@@ -130,6 +141,15 @@ models:
         description: total units
       - name: gross_item_sales_amount
         description: '{{ doc("gross_item_sales_amount") }}'
+        meta:
+          metrics:
+            total_revenue:
+              type: sum
+              show_underlying_values:
+                - return_flag
+                - order_item_status_code
+                - supplier_key
+                - ship_mode
       - name: discounted_item_sales_amount
         description: '{{ doc("discounted_item_sales_amount") }}'
       - name: item_discount_amount
@@ -153,6 +173,10 @@ models:
         tests:
           - unique
           - not_null
+        meta:
+          metrics:
+            total_orders:
+              type: sum
       - name: customer_key
         description: foreign key for customers
         tests:
@@ -160,6 +184,10 @@ models:
               to: ref('dim_customers')
               field: customer_key
               severity: error
+        meta:
+          metrics:
+            total_unique_customers:
+              type: count_distinct
       - name: order_date
         description: date of the order
       - name: status_code

@@ -18,8 +18,8 @@ metrics:
       - order_item_status_code
       - supplier_key
       - ship_mode
-    
-  - << : *finance-metric
+
+  - <<: *finance-metric
     name: total_customers
     label: Total Customers
     model: ref('fct_order_items')
@@ -27,23 +27,22 @@ metrics:
     calculation_method: count_distinct
     expression: customer_key
 
-
-  - << : *finance-metric
+  - <<: *finance-metric
     name: total_expenses
     label: Total Expenses
     model: ref('fct_order_items')
     description: Total expenses from all orders
     expression: supplier_cost
 
-  - << : *finance-metric
+  - <<: *finance-metric
     name: total_profit
     label: Total Profit
     description: Total profit from all orders
     calculation_method: derived
     model: # Derived metrics cannot have a 'model' property
     expression: "{{ metric('total_revenue') }} - {{ metric('total_expenses') }}"
-  
-  - << : *finance-metric
+
+  - <<: *finance-metric
     name: average_revenue_per_customer
     label: Average Revenue Per Customer
     description: The average revenue received per customer
