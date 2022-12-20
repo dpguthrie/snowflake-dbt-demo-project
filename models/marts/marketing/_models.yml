@@ -5,7 +5,7 @@ models:
   - name: int_segment__pages
     columns:
       - name: anonymous_id
-        description: ""
+        description: "A pseudo-unique substitute for a User ID, for cases when you don’t have an absolutely unique identifier. A userId or an anonymousId is required. See the Identities docs for more details."
         meta:
           dimension:
             type: string
@@ -20,7 +20,7 @@ models:
           dimension:
             type: string
       - name: url
-        description: ""
+        description: "Page’s full URL. Segment first looks for the canonical URL. If the canonical URL is not provided, Segment uses `location.href` from the DOM API."
         meta:
           dimension:
             type: string
@@ -48,12 +48,12 @@ models:
             total_page_views:
               type: count_distinct
       - name: received_at
-        description: ""
+        description: "Automatically set by Segment, the timestamp of when a message is received by Segment It is an ISO-8601 date string. See the Timestamps fields docs for more detail."
         meta:
           dimension:
             type: timestamp
       - name: title
-        description: ""
+        description: "Page’s title. Equivalent to `document.title` from the DOM API."
         meta:
           dimension:
             type: string
@@ -63,17 +63,17 @@ models:
           dimension:
             type: string
       - name: path
-        description: ""
+        description: "Path portion of the page's URL.  Equivalent to `canonical_path` which defaults to `location.pathname` from the DOM API."
         meta:
           dimension:
             type: string
       - name: referrer
-        description: ""
+        description: "Previous page’s full URL. Equivalent to `document.referrer` from the DOM API."
         meta:
           dimension:
             type: string
       - name: timestamp
-        description: ""
+        description: "Timestamp when the message itself took place, defaulted to the current time by the Segment Tracking API, as a ISO-8601 format date string. If the event just happened, leave it out and we’ll use the server’s time. If you’re importing data from the past, make sure you to provide a timestamp.See the Timestamps fields docs for more detail."
         meta:
           dimension:
             type: timestamp
@@ -83,7 +83,7 @@ models:
           dimension:
             type: timestamp
       - name: sent_at
-        description: ""
+        description: "Timestamp of when a message is sent to Segment, used for clock skew correction It is set automatically by the Segment tracking libraries. It is an ISO-8601 date string. See the Timestamps fields docs for more detail."
         meta:
           dimension:
             type: timestamp
@@ -108,7 +108,17 @@ models:
           dimension:
             type: string
       - name: src
-        description: ""
+        description: "The application source"
+        meta:
+          dimension:
+            type: string
+      - name: device
+        description: "Type of device accessing the page"
+        meta:
+          dimension:
+            type: string
+      - name: device_category
+        description: "Category of device accessing the page"
         meta:
           dimension:
             type: string
@@ -176,16 +186,16 @@ models:
           dimension:
             type: timestamp
       - name: context_locale
-        description: ""
+        description: "Locale string for the current user, for example en-US."
         meta:
           dimension:
             type: string
       - name: context_user_agent
-        description: ""
+        description: "User agent of the device making the request."
         meta:
           dimension:
             type: string
-      - name: id
+      - name: id g
         description: ""
         meta:
           dimension:
