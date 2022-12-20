@@ -9,6 +9,9 @@ models:
         meta:
           dimension:
             type: string
+          metrics:
+            number_of_unique_users:
+              type: sum
       - name: context_locale
         description: ""
         meta:
@@ -82,6 +85,10 @@ models:
         meta:
           dimension:
             type: timestamp
+          metrics:
+            most_recent_visit:
+              type: date
+              sql: "max(${timestamp})"
       - name: sent_at
         description: "Timestamp of when a message is sent to Segment, used for clock skew correction It is set automatically by the Segment tracking libraries. It is an ISO-8601 date string. See the Timestamps fields docs for more detail."
         meta:
