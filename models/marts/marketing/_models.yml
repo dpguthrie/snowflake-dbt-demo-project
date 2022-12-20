@@ -1,6 +1,5 @@
 version: 2
 
-
 models:
   - name: int_segment__pages
     columns:
@@ -125,6 +124,16 @@ models:
         meta:
           dimension:
             type: string
+      - name: page_url_host
+        description: "Page URL Host"
+        meta:
+          dimension:
+            type: string
+      - name: referrer_host
+        description: "Host of the referrer"
+        meta:
+          dimension:
+            type: string
 
   - name: int_segment__tracks
     columns:
@@ -223,5 +232,5 @@ models:
         meta:
           dimension:
             type: string
-  
+
   - name: int_segment__link_clicked
