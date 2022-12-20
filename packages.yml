@@ -9,5 +9,5 @@ packages:
     version: [">=1.3.0", "<1.4.0"]
   - package: Snowflake-Labs/dbt_constraints
     version: 0.3.1
-  - git: "https://github.com/dpguthrie/dbt_artifacts.git"
-    revision: main
+  - package: brooklyn-data/dbt_artifacts
+    version: 2.2.2
