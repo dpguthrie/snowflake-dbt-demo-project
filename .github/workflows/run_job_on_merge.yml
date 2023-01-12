@@ -30,4 +30,21 @@ jobs:
           dbtc trigger-job \
               --job-id=$JOB_ID \
               --payload='{"cause": "Merging code to main"}' \
-              --no-should-poll
+          echo "RUN_ID=$(echo $run | jq '.data.id')" >> $GITHUB_ENV
+      
+      - name: Get manifest
+        id: manifest
+        run: |
+          manifest=$(dbtc get-run-artifact \
+            --account-id=$DBT_CLOUD_ACCOUNT_ID \
+            --run-id=$RUN_ID \
+            --path=manifest.json)
+          echo $manifest > prod/manifest.json
+
+      - name: Add Manifest to Repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '*.json'
+          committer_name: Github Actions
+          committer_email: actions@github.com
+          message: 'Adding manifest from merge run'
