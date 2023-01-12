@@ -27,9 +27,9 @@ jobs:
       - name: Restart Job from Failure
         run: |
           pip install dbtc==0.2.2
-          dbtc trigger-job \
+          run=$(dbtc trigger-job \
               --job-id=$JOB_ID \
-              --payload='{"cause": "Merging code to main"}' \
+              --payload='{"cause": "Merging code to main"}')
           echo "RUN_ID=$(echo $run | jq '.data.id')" >> $GITHUB_ENV
       
       - name: Get manifest
