@@ -1,0 +1,11 @@
+on:
+  repository_dispatch:
+
+jobs:
+  run_if_success:
+    # if: ${{ github.event.run.fields.runStatus == '10' }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.run.fields }}
+        run: echo $MESSAGE
