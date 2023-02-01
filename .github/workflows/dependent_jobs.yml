@@ -20,8 +20,8 @@ jobs:
       
       - name: Trigger Job 1
         run: |
-          pip install dbtc
-          run=$(dbtc trigger-job-and-poll \
+          pip install dbtc==0.3.4
+          run=$(dbtc trigger-job \
             --job-id=$JOB_1_ID \
             --payload='{"cause": "GH Action - Dependent Jobs - Job 1"}')
           echo "STATUS=$(echo $run | jq '.data.status')" >> $GITHUB_ENV
@@ -31,4 +31,5 @@ jobs:
         run: |
           dbtc trigger-job \
             --job-id=$JOB_2_ID \
-            --payload='{"cause": "GH Action - Dependent Jobs - Job 2"}'
+            --payload='{"cause": "GH Action - Dependent Jobs - Job 2"}' \
+            --no-should-poll
