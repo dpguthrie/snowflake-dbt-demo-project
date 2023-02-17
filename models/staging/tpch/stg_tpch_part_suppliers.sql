@@ -8,7 +8,7 @@ renamed as (
 
     select
     
-        {{ dbt_utils.generate_surrogate_key(
+        {{ dbt_utils.surrogate_key(
             ['ps_partkey', 
             'ps_suppkey']) }} 
                 as part_supplier_key,
