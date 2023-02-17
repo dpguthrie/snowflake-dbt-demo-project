@@ -42,10 +42,18 @@ models:
   tpch:
     staging:
       +materialized: view
+      segment:
+        dbtc:
+          +tags: marketing_pre_amplitude
+        yahooquery:
+          +tags: marketing_pre_calc
 
     marts:
       core:
         materialized: table
+        +tags: marketing
+      intermediate:
+        +tags: marketing_amplitude
       
 seeds:
   tpch:
