@@ -4,7 +4,6 @@ version: 2
 sources:
   - name: tpch
     description: '{{ doc("tpch_source") }}'
-    database: doug_demo_v2
     schema: tpch
     freshness:
       warn_after: {count: 24, period: hour}

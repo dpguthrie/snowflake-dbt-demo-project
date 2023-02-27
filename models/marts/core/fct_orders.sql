@@ -22,7 +22,7 @@ order_item_summary as (
         order_key,
         sum(gross_item_sales_amount) as gross_item_sales_amount,
         sum(item_discount_amount) as item_discount_amount,
-        sum(item_tax_amount) as item_tax_amount,
+        sum(item_tax_amount) as item_tax_amount,,
         sum(net_item_sales_amount) as net_item_sales_amount
     from order_item
     group by
