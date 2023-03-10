@@ -160,8 +160,8 @@ sources:
             description: raw retail price
             tests:
               - dbt_utils.accepted_range:
-                  min_value: 0
-                  max_value: 2000
+                  min_value: -1
+                  max_value: 0
           - name: p_comment
             description: '{{ doc("comment") }}'
 
