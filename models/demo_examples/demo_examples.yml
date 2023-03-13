@@ -16,9 +16,6 @@ models:
         tests:
           - unique
           - not_null 
-
-  - name: get_area_of_circle
-    description: demo to show udfs
         
 sources:
   - name: test_eqrx_s3

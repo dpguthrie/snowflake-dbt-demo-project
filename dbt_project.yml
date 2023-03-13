@@ -27,31 +27,29 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
     - "dbt_packages"
 
-on-run-end:
-  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
-
 vars:
   start_date: '1999-01-01'
-  test: 'false' # to trigger runs for unit testing - override in a CLI param in testing job
-  fct_order_items: 'mock_source__fct_order_items' # this is a map for unit testing
-  dbt_constraints_sources_enabled: true # only need to enable if using on sources
+  disable_dbt_artifacts_autoupload: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
+  disable_run_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
+  disable_tests_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
+  disable_dbt_invocation_autoupload: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
-  
+  use_anonymous_sproc: True
+
+  +materialized: table
+
   tpch:
     staging:
       +materialized: view
 
     marts:
       core:
-        materialized: table
-  
-  snowflake_spend:
-    enabled: true
-      
+        +materialized: table
+
 seeds:
   tpch:
     snowflake_contract_rates:

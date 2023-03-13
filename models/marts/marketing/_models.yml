@@ -1,0 +1,236 @@
+version: 2
+
+models:
+  - name: int_segment__pages
+    columns:
+      - name: anonymous_id
+        description: "A pseudo-unique substitute for a User ID, for cases when you don’t have an absolutely unique identifier. A userId or an anonymousId is required. See the Identities docs for more details."
+        meta:
+          dimension:
+            type: string
+          metrics:
+            number_of_unique_users:
+              type: sum
+      - name: context_locale
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_referrer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: url
+        description: "Page’s full URL. Segment first looks for the canonical URL. If the canonical URL is not provided, Segment uses `location.href` from the DOM API."
+        meta:
+          dimension:
+            type: string
+      - name: uuid_ts
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_library_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_version
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: id
+        description: ""
+        meta:
+          dimension:
+            type: string
+          metrics:
+            total_page_views:
+              type: count_distinct
+      - name: received_at
+        description: "Automatically set by Segment, the timestamp of when a message is received by Segment It is an ISO-8601 date string. See the Timestamps fields docs for more detail."
+        meta:
+          dimension:
+            type: timestamp
+      - name: title
+        description: "Page’s title. Equivalent to `document.title` from the DOM API."
+        meta:
+          dimension:
+            type: string
+      - name: context_page_title
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: path
+        description: "Path portion of the page's URL.  Equivalent to `canonical_path` which defaults to `location.pathname` from the DOM API."
+        meta:
+          dimension:
+            type: string
+      - name: referrer
+        description: "Previous page’s full URL. Equivalent to `document.referrer` from the DOM API."
+        meta:
+          dimension:
+            type: string
+      - name: timestamp
+        description: "Timestamp when the message itself took place, defaulted to the current time by the Segment Tracking API, as a ISO-8601 format date string. If the event just happened, leave it out and we’ll use the server’s time. If you’re importing data from the past, make sure you to provide a timestamp.See the Timestamps fields docs for more detail."
+        meta:
+          dimension:
+            type: timestamp
+      - name: original_timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: sent_at
+        description: "Timestamp of when a message is sent to Segment, used for clock skew correction It is set automatically by the Segment tracking libraries. It is an ISO-8601 date string. See the Timestamps fields docs for more detail."
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_ip
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_path
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_user_agent
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: src
+        description: "The application source"
+        meta:
+          dimension:
+            type: string
+      - name: device
+        description: "Type of device accessing the page"
+        meta:
+          dimension:
+            type: string
+      - name: device_category
+        description: "Category of device accessing the page"
+        meta:
+          dimension:
+            type: string
+      - name: page_url_host
+        description: "Page URL Host"
+        meta:
+          dimension:
+            type: string
+      - name: referrer_host
+        description: "Host of the referrer"
+        meta:
+          dimension:
+            type: string
+
+  - name: int_segment__tracks
+    columns:
+      - name: event_text
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_version
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_referrer
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_url
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: event
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_ip
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_path
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_page_title
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: received_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: sent_at
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: uuid_ts
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: context_locale
+        description: "Locale string for the current user, for example en-US."
+        meta:
+          dimension:
+            type: string
+      - name: context_user_agent
+        description: "User agent of the device making the request."
+        meta:
+          dimension:
+            type: string
+      - name: id g
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: original_timestamp
+        description: ""
+        meta:
+          dimension:
+            type: timestamp
+      - name: anonymous_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: context_library_name
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: src
+        description: ""
+        meta:
+          dimension:
+            type: string
+
+  - name: int_segment__link_clicked

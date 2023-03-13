@@ -1,7 +1,7 @@
 version: 2
 
 exposures:
-  - name: orders_dashboard
+  - name: sales_by_region
     description: |
       # An h1 header
       ============
@@ -18,15 +18,15 @@ exposures:
     type: dashboard 
     
     # this is just a link to the thing itself for click through from documentation
-    url: https://example.com
+    url: https://10az.online.tableau.com/#/site/dbtlabspartner/views/SalesWorkbook/Dashboard1
     
     # convenience feature - relative scale of {high, medium, low}
     maturity: high
     
     # documentation purposes for point of contact if stuff breaks
     owner:
-      name: DBT User Bob
-      email: dbtuserbob@getdbt.com
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
     
     # IMPORTANT: determines the lineage relationship of the exposure construct to the rest of your DAG
     depends_on:

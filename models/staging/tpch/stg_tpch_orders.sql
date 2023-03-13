@@ -19,6 +19,7 @@ renamed as (
         o_comment as comment,
         'hello' as world
 
+
     from source
 
 )
