@@ -38,15 +38,18 @@ vars:
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
-  
+  use_anonymous_sproc: True
+
+  +materialized: table
+
   tpch:
     staging:
       +materialized: view
 
     marts:
       core:
-        materialized: table
-      
+        +materialized: table
+
 seeds:
   tpch:
     snowflake_contract_rates:
