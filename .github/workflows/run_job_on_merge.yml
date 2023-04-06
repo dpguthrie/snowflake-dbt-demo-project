@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Merge Job
         run: |
-          pip install dbtc==0.3.3
+          pip install dbtc==0.4.2
           run=$(dbtc trigger-job \
               --job-id=$JOB_ID \
               --payload='{"cause": "Merging code to main"}')
