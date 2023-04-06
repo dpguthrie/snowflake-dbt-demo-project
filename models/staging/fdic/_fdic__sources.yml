@@ -1,0 +1,46 @@
+version: 2
+
+
+sources:
+  - name: fdic
+    description: Details on all FDIC-insured banks, including locations, comprehensive financial reports, demographic reports, current data, and historical data going back to 1992.
+    tables:
+      - name: failures
+        description: Detail on historical bank failures from 1934 to present
+        columns:
+          - name: cert
+            tests:
+              - unique
+              - not_null
+      - name: institutions
+        description: Financial institution demographic and location information
+        columns:
+          - name: cert
+            tests:
+              - unique
+              - not_null
+      - name: lending_0
+        columns:
+          - name: cert
+            tests:
+              - not_null
+      - name: lending_1
+        columns:
+          - name: cert
+            tests:
+              - not_null
+      - name: lending_2
+        columns:
+          - name: cert
+            tests:
+              - not_null
+      - name: locations
+        description: Branch locations by institution
+        columns:
+          - name: uninum
+            tests:
+              - unique
+              - not_null
+          - name: cert
+            tests:
+              - not_null

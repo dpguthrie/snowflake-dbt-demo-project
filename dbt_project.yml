@@ -33,6 +33,26 @@ vars:
   disable_run_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
   disable_tests_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
   disable_dbt_invocation_autoupload: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
+  lending_cols_map: {
+    'LNRECNFM': 'residential_construction_loans_1_4_fam_loans',
+    'LNRECNOT': 'other_construction_loans',
+    'LNREAG': 'agricultural_real_estate_loans',
+    'LNRELOC': 'revolving_1_4_fam_loans',
+    'LNRERSFM': 'closed_1_4_fam_first_lien_loans',
+    'LNRERSF2': 'closed_1_4_fam_junior_lien_loans',
+    'LNREMULT': 'multifamily_loans',
+    'LNRENROW': 'nonfarm_nonres_owner_occupied_loans',
+    'LNRENROT': 'nonfarm_nonres_other_loans',
+    'LNDEP': 'depository_institution_loans',
+    'LNAG': 'agricultural_loans',
+    'LNCI': 'commercial_and_industrial_loans',
+    'LNCRCD': 'credit_card_loans',
+    'LNCONRP': 'other_revolving_credit_loans',
+    'LNAUTO': 'autombile_loans',
+    'LNCONOTH': 'other_consumer_loans',
+    'LNMUNI': 'states_and_political_loans',
+    'LNOTHER': 'other_loans',
+  }
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

@@ -1,0 +1,18 @@
+version: 2
+
+
+models:
+  - name: base_fdic__lending_unioned
+    columns:
+      - name: value
+        tests:
+          - not_null
+  - name: stg_fdic__failures
+  - name: stg_fdic__institutions
+  - name: stg_fdic__lending
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - cert
+            - callymd
+  - name: stg_fdic__locations
