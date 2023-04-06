@@ -77,5 +77,3 @@ Generates the YAML for multiple models
     )
 }}
 ```
-
-trivial change
