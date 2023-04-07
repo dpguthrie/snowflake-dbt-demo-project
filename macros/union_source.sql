@@ -23,7 +23,7 @@ come at the expense of readability.
 
     {% for relation in relations %}
 
-        {% do sources.append(source(schema_pattern, relation.table)) %}
+        {% do sources.append(source(schema_pattern, relation.table | lower())) %}
 
     {% endfor %}
 
