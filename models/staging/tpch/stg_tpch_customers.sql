@@ -15,7 +15,7 @@ cleanup as (
         c_phone as phone_number,
         c_acctbal as account_balance,
         c_mktsegment as market_segment,
-        c_comment as comment
+        c_comment as comment,
 
     from source
 
