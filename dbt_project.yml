@@ -49,6 +49,8 @@ models:
     marts:
       core:
         +materialized: table
+    ml:
+      +enabled: false
 
 seeds:
   tpch:
