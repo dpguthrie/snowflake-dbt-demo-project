@@ -23,7 +23,7 @@ jobs:
           output: ' '
 
       - name: Install pre-commit
-        run: python -m pip install dbt-snowflake pre-commit
+        run: python -m pip install "dbt-snowflake<1.4.0" pre-commit
 
       - name: Run pre-commit model checks
         env:
