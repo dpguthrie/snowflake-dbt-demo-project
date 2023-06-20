@@ -3,7 +3,8 @@ def model(dbt, session):
     # Access to config block
     dbt.config(
         materialized='table',
-        snowflake_warehouse='SNOWPARK_WH'
+        snowflake_warehouse='SNOWPARK_WH',
+        enabled=False,
     )
 
     # Get upstream data
