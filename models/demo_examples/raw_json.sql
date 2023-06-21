@@ -1,0 +1,1 @@
+select parse_json('{a:1, b:2, c:"doug is super cool"}') as json
