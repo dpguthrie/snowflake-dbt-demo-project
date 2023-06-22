@@ -1,1 +1,1 @@
-select parse_json('{a:1, b:2, c:"doug is super cool"}') as json
+select parse_json('{a:1, b:2, address: {"city": "Littleton", "state": "Colorado", "zip": 80123, "street": "5204 S. Everett Ct", "county": "Jefferson"}}') as json
