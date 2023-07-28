@@ -9,4 +9,7 @@ packages:
     version: ["<1.4.0"]
   - package: brooklyn-data/dbt_artifacts
     version: ["<3.0.0"]
-  
+  - git: "https://github.com/dpguthrie/instagram_module"
+    revision: "{{ env_var('DBT_ENV_IG_REVISION', 'main') }}"
+  - git: "https://github.com/dpguthrie/facebook_module"
+    revision: "{{ env_var('DBT_ENV_FB_REVISION', 'main') }}"

@@ -1,0 +1,1 @@
+select * from {{ ref('int_facebook_ads_agg') }}
